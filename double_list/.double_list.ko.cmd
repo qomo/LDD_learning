@@ -1,0 +1,1 @@
+cmd_/home/qomoliao/LDD/double_list/double_list.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.13.0-43-generic/scripts/module-common.lds --build-id  -o /home/qomoliao/LDD/double_list/double_list.ko /home/qomoliao/LDD/double_list/double_list.o /home/qomoliao/LDD/double_list/double_list.mod.o
