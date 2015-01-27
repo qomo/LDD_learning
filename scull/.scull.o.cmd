@@ -612,6 +612,12 @@ deps_/home/qomoliao/LDD/scull/scull.o := \
   include/linux/slub_def.h \
     $(wildcard include/config/slub/stats.h) \
     $(wildcard include/config/memcg/kmem.h) \
+  /usr/src/linux-headers-3.13.0-43-generic/arch/x86/include/asm/uaccess.h \
+    $(wildcard include/config/x86/intel/usercopy.h) \
+    $(wildcard include/config/debug/strict/user/copy/checks.h) \
+  /usr/src/linux-headers-3.13.0-43-generic/arch/x86/include/asm/smap.h \
+    $(wildcard include/config/x86/smap.h) \
+  /usr/src/linux-headers-3.13.0-43-generic/arch/x86/include/asm/uaccess_64.h \
   /home/qomoliao/LDD/scull/scull.h \
 
 /home/qomoliao/LDD/scull/scull.o: $(deps_/home/qomoliao/LDD/scull/scull.o)

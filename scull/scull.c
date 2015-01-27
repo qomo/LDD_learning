@@ -5,6 +5,7 @@
 #include <linux/kdev_t.h>
 #include <linux/cdev.h>
 #include <linux/slab.h>
+#include <asm/uaccess.h>
 
 #include "scull.h"
 
@@ -21,16 +22,6 @@ int scull_quantum = SCULL_QUANTUM;
 int scull_qset = SCULL_QSET;
 
 struct scull_dev *scull_devices;    /* allocated in scull_init_module */
-
-
-struct file_operations scull_fops = {
-    .owner = THIS_MODULE,
-//    .read = scull_read,
-//    .write = scull_write,
-//    .open = scull_open,
-//    .release = scull_release,
-};
-
 
 /*
  * Empty out the scull device; must be called with the device 
@@ -58,6 +49,157 @@ int scull_trim(struct scull_dev *dev)
     dev->data = NULL;
     return 0;
 }
+
+int scull_open(struct inode *inode, struct file *filp)
+{
+    struct scull_dev *dev;  /* device information */
+
+    dev = container_of(inode->i_cdev, struct scull_dev, cdev);
+    filp->private_data = dev;   /* for other methods */
+
+    /* now trim to o the lenght of the device if open was write-only */
+    if((filp->f_flags & O_ACCMODE) == O_WRONLY){
+        scull_trim(dev);    /* ignore errors */
+    }
+    return 0;
+}
+
+int scull_release(struct inode *inode, struct file *filp)
+{
+    return 0;
+}
+
+/*
+ * Follow the list
+ */
+struct scull_qset *scull_follow(struct scull_dev *dev, int n)
+{
+    struct scull_qset *qs = dev->data;
+
+    /* Allocate first qset explicitly if need be */
+    if(!qs) {
+        qs = dev->data = kmalloc(sizeof(struct scull_qset), GFP_KERNEL);
+        if (qs == NULL)
+            return NULL;    /* Never mind */
+        memset(qs, 0, sizeof(struct scull_qset));
+    }
+
+    /* Then follow the list */
+    while (n--) {
+        if (!qs->next) {
+            qs->next = kmalloc(sizeof(struct scull_qset), GFP_KERNEL);
+            if (qs->next == NULL)
+                return NULL;    /* Never mind */
+            memset(qs->next, 0, sizeof(struct scull_qset));
+        }
+        qs = qs->next;
+        continue;
+    }
+    return qs;
+}
+
+ssize_t scull_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
+{
+    struct scull_dev *dev = filp->private_data;
+    struct scull_qset *dptr;    /* 第一个链表项 */
+    int quantum = dev->quantum, qset = dev->qset;
+    int itemsize = quantum * qset;  /* 该链表中有多少个字节 */
+    int item, s_pos, q_pos, rest;   
+    ssize_t retval = 0;
+
+    if(mutex_lock_interruptible(&dev->mutex))
+        return -ERESTARTSYS;
+    if(*f_pos >= dev->size)
+        goto out;
+    if(*f_pos + count > dev->size)
+        count = dev->size - *f_pos;
+
+    /* 在量子集中寻找链表项、qset索引以及偏移量 */
+    item = (long) *f_pos / itemsize;
+    rest = (long) *f_pos % itemsize;
+    s_pos = rest / quantum; q_pos = rest % quantum;
+
+    /* 沿该链表前行，直到正确的位置（在其他地方定义）*/
+    dptr = scull_follow(dev, item);
+
+    if(dptr == NULL || !dptr->data || !dptr->data[s_pos])
+        goto out;   /* don't fill holes */
+
+    /* 读取该量子的数据直到结尾 */
+    if (count > quantum - q_pos)
+        count = quantum - q_pos;
+
+    if (copy_to_user(buf, dptr->data[s_pos] + q_pos, count)) {
+        retval = -EFAULT;
+        goto out;
+    }
+    *f_pos += count;
+    retval = count;
+
+out:
+    mutex_unlock(&dev->mutex);
+    return retval;
+}
+
+ssize_t scull_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_pos)
+{
+    struct scull_dev *dev = filp->private_data;
+    struct scull_qset *dptr;
+    int quantum = dev->quantum, qset = dev->qset;
+    int itemsize = quantum * qset;
+    int item, s_pos, q_pos, rest;
+    ssize_t retval = -ENOMEM;   /* “goto out” 语句使用的值 */
+
+    if (mutex_lock_interruptible(&dev->mutex))
+        return -ERESTARTSYS;
+
+    /* 在量子集中寻找链表项、qset索引以及偏移量 */
+    item = (long) *f_pos / itemsize;
+    rest = (long) *f_pos % itemsize;
+    s_pos = rest / quantum; q_pos = rest % quantum;
+
+    /* 沿该链表前行，直到正确的位置（在其他地方定义）*/
+    dptr = scull_follow(dev, item);
+    if (dptr == NULL)
+        goto out;
+    if (!dptr->data) {
+        dptr->data = kmalloc(qset * sizeof(char *), GFP_KERNEL);
+        if (!dptr->data)
+            goto out;
+        memset(dptr->data, 0, qset * sizeof(char *));
+    }
+    if (!dptr->data[s_pos]) {
+        dptr->data[s_pos] = kmalloc(quantum, GFP_KERNEL);
+        if (!dptr->data[s_pos])
+            goto out;
+    }
+    /* 将数据写入该量子，直到结尾*/
+    if (count > quantum - q_pos)
+        count = quantum - q_pos;
+
+    if (copy_from_user(dptr->data[s_pos]+q_pos, buf, count)) {
+        retval = -EFAULT;
+        goto out;
+    }
+    *f_pos += count;
+    retval = count;
+
+    /* 更新文件大小 */
+    if (dev->size < *f_pos)
+        dev->size = *f_pos;
+
+out:
+    mutex_unlock(&dev->mutex);
+    return retval;
+}
+
+struct file_operations scull_fops = {
+    .owner = THIS_MODULE,
+    .read = scull_read,
+    .write = scull_write,
+    .open = scull_open,
+    .release = scull_release,
+};
 
 /*
  * The cleanup function is used to handle initialization failures as well.
