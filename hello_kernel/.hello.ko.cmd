@@ -1,1 +1,0 @@
-cmd_/home/qomoliao/LDD/hello/hello.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/qomoliao/LDD/hello/hello.ko /home/qomoliao/LDD/hello/hello.o /home/qomoliao/LDD/hello/hello.mod.o

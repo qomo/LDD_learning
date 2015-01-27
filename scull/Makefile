@@ -1,4 +1,4 @@
-obj-m += hello.o
+obj-m += scull.o
 #generate the path
 CURRENT_PATH:=$(shell pwd)
 #the current kernel version number

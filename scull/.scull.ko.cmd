@@ -1,0 +1,1 @@
+cmd_/home/qomoliao/LDD/scull/scull.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.13.0-43-generic/scripts/module-common.lds --build-id  -o /home/qomoliao/LDD/scull/scull.ko /home/qomoliao/LDD/scull/scull.o /home/qomoliao/LDD/scull/scull.mod.o
