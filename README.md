@@ -7,6 +7,8 @@ https://www.kernel.org/
 http://www.kerneltravel.net/
 * Linux 设备驱动入门系列
 http://www.kerneltravel.net/?page_id=476
+* liuhaoyutz的博客
+http://blog.csdn.net/liuhaoyutz
 * 源码 
 https://github.com/duxing2007/ldd3-examples-3.x
 
@@ -48,5 +50,12 @@ http://blog.csdn.net/liuhaoyutz/article/details/7383313
 * Android字符设备驱动开发
 http://blog.csdn.net/liuhaoyutz/article/details/8500300
 
-### 一点说明
+### NOTE
 * 源码使用了与书本不同的加锁方式（mutex和semaphore）
+
+## 第四章 调试技术
+
+
+### NOTE
+* `create_proc_read_entry` is a deprecated function
+https://lkml.org/lkml/2013/4/11/215
