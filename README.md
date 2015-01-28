@@ -7,6 +7,8 @@ https://www.kernel.org/
 http://www.kerneltravel.net/
 * Linux 设备驱动入门系列
 http://www.kerneltravel.net/?page_id=476
+* 源码 
+https://github.com/duxing2007/ldd3-examples-3.x
 
 ## 第一章 设备驱动程序简介
 * Linux Kernel 编译
@@ -43,4 +45,8 @@ https://github.com/jiangchengbin/drivers/blob/master/globalmem/globalmem.c
 http://blog.chinaunix.net/uid-28440799-id-3438698.html
 * LDD3源码分析之字符设备驱动程序
 http://blog.csdn.net/liuhaoyutz/article/details/7383313
+* Android字符设备驱动开发
+http://blog.csdn.net/liuhaoyutz/article/details/8500300
 
+### 一点说明
+* 源码使用了与书本不同的加锁方式（mutex和semaphore）
