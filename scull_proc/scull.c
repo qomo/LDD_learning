@@ -7,6 +7,9 @@
 #include <linux/slab.h>
 #include <asm/uaccess.h>
 
+#include <linux/proc_fs.h>
+#include <linux/seq_file.h>
+
 #include "scull.h"
 
 /*
@@ -22,6 +25,106 @@ int scull_quantum = SCULL_QUANTUM;
 int scull_qset = SCULL_QSET;
 
 struct scull_dev *scull_devices;    /* allocated in scull_init_module */
+
+
+#ifdef SCULL_DEBUG /* use proc only if debugging */
+/*
+ * Here are our sequence iteration methods. Our "position" is 
+ * simply the device number.
+ */
+static void *scull_seq_start(struct seq_file *s, loff_t *pos)
+{
+    if (*pos >= scull_nr_devs)
+        return NULL;    /* No more to read */
+    return scull_devices + *pos;
+}
+
+static void *scull_seq_next(struct seq_file *s, void *v, loff_t *pos)
+{
+    (*pos)++;
+    if (*pos >= scull_nr_devs)
+        return NULL;
+    return scull_devices + *pos;
+}
+
+static void scull_seq_stop(struct seq_file *s, void *v)
+{
+    /* Actually, there's nothing to do here */
+}
+
+static void scull_seq_show(struct seq_file *s, void *v)
+{
+    struct scull_dev *dev = (struct scull_dev *) v;
+    struct scull_qset *d;
+    int i;
+
+    if (mutex_lock_interruptible(&dev->mutex))
+        return -ERESTARTSYS;
+    seq_printf(s, "\nDevice %i: qset %i, q %i, sz %li\n",
+              (int) (dev - scull_devices), dev->qset,
+              dev->quantum, dev->size);
+    for (d = dev->data; d; d = d->next) {
+        /* scan the list */
+        seq_printf(s, " item at %p, qset at %p\n", d, d->data);
+        if (d->data && !d->next) /* dump only the last item */
+        for (i = 0; i < dev->qset; i++){
+                if (d->data[i])
+                    seq_printf(s, "  % 4i: %8p\n",
+                              i, d->data[i]);
+        }
+    }
+    mutex_unlock(&dev->mutex);
+    return 0;
+}
+
+/*
+ * Tie the sequence operators up.
+ */
+ static struct seq_operations scull_seq_ops = {
+     .start = scull_seq_start,
+     .next  = scull_seq_next,
+     .stop  = scull_seq_stop,
+     .show  = scull_seq_show
+ };
+
+ /*
+  * Now to implement the /proc file we need only make an open
+  * method which sets up the sequence operators.
+  */
+static int scull_proc_open(struct inode *inode, struct file *file)
+{
+    return seq_open(file, &scull_seq_ops);
+}
+
+/*
+ * Create a set of file operations for our proc file.
+ */
+static struct file_operations scull_proc_ops = {
+    .owner     = THIS_MODULE,
+    .open      = scull_proc_open,
+    .read      = seq_read,
+    .llseek    = seq_lseek,
+    .release   = seq_release
+};
+
+/*
+ * Actually create (and remove) the /proc file(s).
+ */
+
+static void scull_create_proc(void)
+{
+    struct proc_dir_entry *entry;
+    entry = proc_create("scullseq", 0, NULL, &scull_proc_ops);
+    if (!entry)
+        printk(KERN_WARNING "proc_create scullseq failed\n");
+}
+
+static void scull_remove_proc(void)
+{
+    /* no problem if it was not registered */
+    remove_proc_entry("scullseq", NULL);
+}
+#endif /*SCULL_DEBUG*/
 
 /*
  * Empty out the scull device; must be called with the device 
@@ -220,6 +323,10 @@ void scull_cleanup_module(void)
         kfree(scull_devices);
     }
 
+#ifdef SCULL_DEBUG /* use proc only if debugging */
+    scull_remove_proc();
+#endif
+
     /* cleanup_module is never called if registering failed */
     unregister_chrdev_region(devno, scull_nr_devs);
 
@@ -283,6 +390,10 @@ static int scull_init(void)
         mutex_init(&scull_devices[i].mutex);
         scull_setup_cdev(&scull_devices[i], i);
     }
+
+#ifdef SCULL_DEBUG /* only when debugging */
+    scull_create_proc();
+#endif
 
     return 0; /* succeed */
 
