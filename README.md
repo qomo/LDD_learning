@@ -52,6 +52,7 @@ http://blog.csdn.net/liuhaoyutz/article/details/8500300
 
 ### NOTE
 * 源码使用了与书本不同的加锁方式（mutex和semaphore）
+http://www.geeksforgeeks.org/mutex-vs-semaphore/
 
 ## 第四章 调试技术
 
@@ -59,3 +60,21 @@ http://blog.csdn.net/liuhaoyutz/article/details/8500300
 ### NOTE
 * `create_proc_read_entry` is a deprecated function
 https://lkml.org/lkml/2013/4/11/215
+
+
+## 第五章 并发和竟态
+
+
+### NOTE
+* 源码使用了与书本不同的加锁方式（mutex和semaphore）
+http://www.geeksforgeeks.org/mutex-vs-semaphore/
+
+## 第六章 高级字符驱动程序操作
+### 学习资源
+* LDD3源码分析之ioctl操作
+http://blog.csdn.net/liuhaoyutz/article/details/7386254
+
+### NOTE
+* ioctl被unlocked_ioctl取代，ioctl实现函数的参数也有变化
+http://unix.stackexchange.com/questions/4711/what-is-the-difference-between-ioctl-unlocked-ioctl-and-compat-ioctl
+http://stackoverflow.com/questions/1063564/unlocked-ioctl-vs-normal-ioctl
