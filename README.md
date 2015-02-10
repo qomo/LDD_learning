@@ -78,3 +78,14 @@ http://blog.csdn.net/liuhaoyutz/article/details/7386254
 * ioctl被unlocked_ioctl取代，ioctl实现函数的参数也有变化
 http://unix.stackexchange.com/questions/4711/what-is-the-difference-between-ioctl-unlocked-ioctl-and-compat-ioctl
 http://stackoverflow.com/questions/1063564/unlocked-ioctl-vs-normal-ioctl
+
+
+## 附加1 Android驱动程序开发
+
+* android_driver_example.tgz就是这个驱动的源码
+* 参考链接
+http://s1.mi.com/open/index.html?20150210#hezimini
+> 源码与参考链接有一点点不同，主要在锁上
+* 调试在真实的nexus 5上进行
+
+
