@@ -32,6 +32,10 @@
 #define SCULL_NR_DEVS 4     /* scull0 through scull3 */
 #endif
 
+#ifndef SCULL_P_NR_DEVS
+#define SCULL_P_NR_DEVS 4   /* scullpipe0 through scullpipe3 */
+#endif 
+
 /*
  * The bare device is a variable-length region of memory.
  * Use a linked list of indirect blocks.
