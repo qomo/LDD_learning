@@ -1,20 +1,37 @@
-/*************************************************************************
-    > File Name: pipe.c
-    > Author: 
-    > Mail: 
-    >i Created Time: 2015年02月09日 星期一 17时02分23秒
- ************************************************************************/
+/*
+ * pipe.c -- fifo driver for scull
+ *
+ * Copyright (C) 2001 Alessandro Rubini and Jonathan Corbet
+ * Copyright (C) 2001 O'Reilly & Associates
+ *
+ * The source code in this file can be freely used, adapted,
+ * and redistributed in source or binary form, so long as an
+ * acknowledgment appears in derived source files.  The citation
+ * should list that the code comes from the book "Linux Device
+ * Drivers" by Alessandro Rubini and Jonathan Corbet, published
+ * by O'Reilly & Associates.   No warranty is attached;
+ * we cannot take responsibility for errors or fitness for use.
+ *
+ */
+ 
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 
-#include <linux/kernel.h>   /* printk(), min() */
-#include <linux/sched.h>
-#include <linux/cdev.h>
-#include <linux/fs.h>
-#include <asm/uaccess.h>
+#include <linux/kernel.h>	/* printk(), min() */
+#include <linux/slab.h>		/* kmalloc() */
+#include <linux/fs.h>		/* everything... */
+#include <linux/proc_fs.h>
+#include <linux/errno.h>	/* error codes */
+#include <linux/types.h>	/* size_t */
 #include <linux/fcntl.h>
+#include <linux/poll.h>
+#include <linux/cdev.h>
+#include <asm/uaccess.h>
+#include <linux/sched.h>
+#include <linux/seq_file.h>
 
-#include "scull.h"
+#include "scull.h"		/* local definitions */
+
 
 struct scull_pipe {
     wait_queue_head_t inq, outq;        /* read and write queues */
@@ -109,7 +126,7 @@ static int spacefree(struct scull_pipe *dev)
     return ((dev->rp + dev->buffersize - dev->wp) % dev->buffersize) - 1;
 }
 
-static ssize_t scull_p_write(struct file *filp, char __user *buf, size_t count, loff_t *f_ops)
+static ssize_t scull_p_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_ops)
 {
     struct scull_pipe *dev = filp->private_data;
     int result;
@@ -206,7 +223,7 @@ int scull_p_init(dev_t firstdev)
     }
 
 #ifdef SCULL_DEBUG
-    create_proc_read_entry("scullpipe", 0, NULL, scull_read_p_mem, NULL);
+    proc_create("scullpipe", 0, NULL, scull_read_p_mem);
 #endif 
     return scull_p_nr_devs;
 }
