@@ -53,7 +53,7 @@ static void scull_seq_stop(struct seq_file *s, void *v)
     /* Actually, there's nothing to do here */
 }
 
-static void scull_seq_show(struct seq_file *s, void *v)
+static int scull_seq_show(struct seq_file *s, void *v)
 {
     struct scull_dev *dev = (struct scull_dev *) v;
     struct scull_qset *d;

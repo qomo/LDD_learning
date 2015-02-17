@@ -4,12 +4,17 @@
     > Mail: 
     >i Created Time: 2015年02月09日 星期一 17时02分23秒
  ************************************************************************/
+#include <linux/module.h>
+#include <linux/moduleparam.h>
 
-#include "scull.h"
+#include <linux/kernel.h>   /* printk(), min() */
+#include <linux/sched.h>
 #include <linux/cdev.h>
 #include <linux/fs.h>
 #include <asm/uaccess.h>
 #include <linux/fcntl.h>
+
+#include "scull.h"
 
 struct scull_pipe {
     wait_queue_head_t inq, outq;        /* read and write queues */
@@ -20,26 +25,17 @@ struct scull_pipe {
     struct fasync_struct *async_queue;  /* asynchronous readers */
     struct mutex mutex;                 /* mutual exclusion semaphore */
     struct cdev cdev;
-}
+};
 
 /* parameters */
-static scull_p_nr_devs = SCULL_P_NR_DEVS;   /* number of pipe devices */
+static int scull_p_nr_devs = SCULL_P_NR_DEVS;   /* number of pipe devices */
+dev_t scull_p_devno;    /* Our first device number */
 
-/*
- * The file operations for the pipe device
- * (some are overlayed with bare scull)
- */
-struct file_operations scull_pipe_fops = {
-    .owner =    THIS_MODULE,
-//    .llseek =   no_llseek,
-    .read =     scull_p_read,
-    .write =    scull_p_write,
-//    .poll =     scull_p_poll,
-//    .unlocked_ioctl =   scull_ioctl,
-//    .open =     scull_p_open,
-//    .release =  scull_p_release,
-//    .fasync =   scull_p_fasync,
-};
+static struct scull_pipe *scull_p_devices;
+
+
+static int spacefree(struct scull_pipe *dev);
+
 
 /*
  * Data managment: read and write
@@ -131,9 +127,9 @@ static ssize_t scull_p_write(struct file *filp, char __user *buf, size_t count, 
     if (dev->wp >= dev->rp)
         count = min(count, (size_t)(dev->end - dev->wp));   /* to end-of-buf */
     else /* the write pointer has wrapped, fill up to rp-1 */
-        count = min(count, (size_t)(dev->rp - dev->wp -1);
+        count = min(count, (size_t)(dev->rp - dev->wp -1));
     PDEBUG("Going to accept %li bytes to %p from %p\n", (long)count, dev->wp, buf);
-    if (copy_from_user(dev->wp, buf, count){
+    if (copy_from_user(dev->wp, buf, count)){
         mutex_unlock(&dev->mutex);
         return -EFAULT;
     }
@@ -152,6 +148,21 @@ static ssize_t scull_p_write(struct file *filp, char __user *buf, size_t count, 
     return count;
 }
 
+/*
+ * The file operations for the pipe device
+ * (some are overlayed with bare scull)
+ */
+struct file_operations scull_pipe_fops = {
+    .owner =    THIS_MODULE,
+//    .llseek =   no_llseek,
+    .read =     scull_p_read,
+    .write =    scull_p_write,
+//    .poll =     scull_p_poll,
+//    .unlocked_ioctl =   scull_ioctl,
+//    .open =     scull_p_open,
+//    .release =  scull_p_release,
+//    .fasync =   scull_p_fasync,
+};
 
 /* 
  * Set up a cdev entry.
@@ -199,4 +210,3 @@ int scull_p_init(dev_t firstdev)
 #endif 
     return scull_p_nr_devs;
 }
-
