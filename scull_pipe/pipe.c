@@ -165,6 +165,16 @@ static ssize_t scull_p_write(struct file *filp, const char __user *buf, size_t c
     return count;
 }
 
+/* FIXME this should use seq_file */
+#ifdef SCULL_DEBUG
+
+static int scull_read_p_mem(struct seq_file *s, void *v)
+{
+
+}
+
+#endif 
+
 /*
  * The file operations for the pipe device
  * (some are overlayed with bare scull)

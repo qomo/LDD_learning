@@ -85,9 +85,23 @@ http://stackoverflow.com/questions/1063564/unlocked-ioctl-vs-normal-ioctl
 * android_driver_example.tgz就是这个驱动的源码
 * 参考链接
 
-> http://s1.mi.com/open/index.html?20150210#hezimini
+> http://blog.csdn.net/liuhaoyutz/article/details/8500300
 源码与参考链接有一点点不同，主要在锁上
 
 * 调试在真实的nexus 5上进行
 
+## 附加2 使用/proc文件系统来访问Linux内核的内容
 
+例程文件夹 --- proc/
+LDD第四章里有用proc文件系统进行调试
+这里是网络上的一个例子，感觉比书里的清晰一点，做个补充
+
+### 不同的是
+参考链接里的proc_entry用旧的方式生成，即`create_proc_entry`
+这个接口在新内核中已经被移除，得用`proc_create`
+read、write方法需要通过`struct file_operations`结构赋予
+这与链接中的方法很不一样，这里在之前的globalmem驱动程序的基础上
+用`proc_creat`方法添加新的proc文件访问驱动接口
+
+> 参考链接：
+http://www.ibm.com/developerworks/cn/linux/l-proc.html#resources

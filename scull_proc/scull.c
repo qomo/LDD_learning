@@ -52,7 +52,7 @@ static void scull_seq_stop(struct seq_file *s, void *v)
     /* Actually, there's nothing to do here */
 }
 
-static void scull_seq_show(struct seq_file *s, void *v)
+static int scull_seq_show(struct seq_file *s, void *v)
 {
     struct scull_dev *dev = (struct scull_dev *) v;
     struct scull_qset *d;
@@ -115,8 +115,6 @@ static void scull_create_proc(void)
 {
     struct proc_dir_entry *entry;
     entry = proc_create("scullseq", 0, NULL, &scull_proc_ops);
-    if (!entry)
-        printk(KERN_WARNING "proc_create scullseq failed\n");
 }
 
 static void scull_remove_proc(void)
