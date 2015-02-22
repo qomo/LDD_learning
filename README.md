@@ -93,14 +93,20 @@ http://stackoverflow.com/questions/1063564/unlocked-ioctl-vs-normal-ioctl
 ## 附加2 使用/proc文件系统来访问Linux内核的内容
 
 例程文件夹 --- proc/
+
 LDD第四章里有用proc文件系统进行调试
+
 这里是网络上的一个例子，感觉比书里的清晰一点，做个补充
 
 ### 不同的是
 参考链接里的proc_entry用旧的方式生成，即`create_proc_entry`
+
 这个接口在新内核中已经被移除，得用`proc_create`
+
 read、write方法需要通过`struct file_operations`结构赋予
+
 这与链接中的方法很不一样，这里在之前的globalmem驱动程序的基础上
+
 用`proc_creat`方法添加新的proc文件访问驱动接口
 
 > 参考链接：
