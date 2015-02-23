@@ -117,9 +117,9 @@ http://www.ibm.com/developerworks/cn/linux/l-proc.html
 
 这个例子做的仅仅是通过proc文件系统将内核的HZ值输出
 
-它使用了seq_file接口，与LDD3不同的是
+它使用**最新的`proc_create()`来产生proc文件**，使用了seq_file接口
 
-它使用`single_open()`打开show函数，而不是通过`seq_open()`打开完整的迭代器操作函数`seq_operations`。
+与LDD3不同的是，它使用`single_open()`打开show函数，而不是通过`seq_open()`打开完整的迭代器操作函数`seq_operations`。
 关于seq_file和single_open()、seq_open()，可以参看下面的链接
 > 参考链接：http://www.ibm.com/developerworks/cn/linux/l-kerns-usrs2/
 
