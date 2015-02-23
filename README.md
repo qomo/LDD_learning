@@ -110,4 +110,19 @@ read、write方法需要通过`struct file_operations`结构赋予
 用`proc_creat`方法添加新的proc文件访问驱动接口
 
 > 参考链接：
-http://www.ibm.com/developerworks/cn/linux/l-proc.html#resources
+http://www.ibm.com/developerworks/cn/linux/l-proc.html
+
+## 附加3 /proc_hz一个最简单的proc例子
+> 参考链接：http://www.linux.com/learn/linux-career-center/39972-kernel-debugging-with-proc-qsequenceq-files-part-2-of-3
+
+这个例子做的仅仅是通过proc文件系统将内核的HZ值输出
+
+它使用了seq_file接口，与LDD3不同的是
+
+它使用`single_open()`打开show函数，而不是通过`seq_open()`打开完整的迭代器操作函数`seq_operations`。
+关于seq_file和single_open()、seq_open()，可以参看下面的链接
+> 参考链接：http://www.ibm.com/developerworks/cn/linux/l-kerns-usrs2/
+
+
+
+
