@@ -60,6 +60,11 @@ http://www.geeksforgeeks.org/mutex-vs-semaphore/
 ### NOTE
 * `create_proc_read_entry` is a deprecated function
 https://lkml.org/lkml/2013/4/11/215
+- 一个非常好的proc介绍
+http://www.linux.com/learn/linux-career-center/37985-the-kernel-newbie-corner-kernel-debugging-using-proc-qsequenceq-files-part-1
+ - proc文件系统介绍
+ - 一个最简单的proc例子
+ - 内核中的version实例
 
 
 ## 第五章 并发和竟态
