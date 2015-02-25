@@ -128,6 +128,17 @@ http://www.ibm.com/developerworks/cn/linux/l-proc.html
 关于seq_file和single_open()、seq_open()，可以参看下面的链接
 > 参考链接：http://www.ibm.com/developerworks/cn/linux/l-kerns-usrs2/
 
+## 附加4 /proc_evens－－一个完整的seq_file例子
+> 参考链接：http://www.linux.com/learn/linux-career-center/44184-the-kernel-newbie-corner-kernel-debugging-with-proc-qsequenceq-files-part-3
 
+这个例子是个独立的seq_file例子，而不像《LDD3》那样是scull驱动的补充。
+所以它更清晰而又完整地讲解了seq_file的很多细节，包括：
+- `start()`,`show()`,`next()`,`stop()`
+- 《LDD3》没有的`stop()`的内容－－也就是释放资源（因为它的start并没有申请资源）
+- What If I Want to Print LOTS of Data?
+- 了解到参数`*sfile`, `*v`, `*pos`到意义和使用
 
+做过这个例子再去看《LDD3》的这个小结，会有更清晰的理解。
 
+**需要说明的是**
+在最新的内核里(linux 3.13.0)，这个例子有一点小bug，也就是前面提到很多次的`create_proc_entry()`被`proc_create()`取代
