@@ -56,15 +56,14 @@ http://www.geeksforgeeks.org/mutex-vs-semaphore/
 
 ## 第四章 调试技术
 
-
-### NOTE
-* `create_proc_read_entry` is a deprecated function
+- `create_proc_read_entry` is a deprecated function
 https://lkml.org/lkml/2013/4/11/215
 - 一个非常好的proc介绍
 http://www.linux.com/learn/linux-career-center/37985-the-kernel-newbie-corner-kernel-debugging-using-proc-qsequenceq-files-part-1
  - proc文件系统介绍
  - 一个最简单的proc例子
  - 内核中的version实例
+- 另外你开可以看附加2～4
 
 
 ## 第五章 并发和竟态
@@ -75,14 +74,18 @@ http://www.linux.com/learn/linux-career-center/37985-the-kernel-newbie-corner-ke
 http://www.geeksforgeeks.org/mutex-vs-semaphore/
 
 ## 第六章 高级字符驱动程序操作
-### 学习资源
+### ioctl小节
+* 源码目录－－/scull_ioctl
 * LDD3源码分析之ioctl操作
 http://blog.csdn.net/liuhaoyutz/article/details/7386254
-
-### NOTE
-* ioctl被unlocked_ioctl取代，ioctl实现函数的参数也有变化
+* 接口处，ioctl被unlocked_ioctl取代，ioctl实现函数的参数也有变化
 http://unix.stackexchange.com/questions/4711/what-is-the-difference-between-ioctl-unlocked-ioctl-and-compat-ioctl
 http://stackoverflow.com/questions/1063564/unlocked-ioctl-vs-normal-ioctl
+
+### 阻塞型IO 
+- 源码目录－－/scull_pipe
+- 源码解读：http://blog.csdn.net/liuhaoyutz/article/details/7395057
+ - 文中说源码有bug，但我想应该再仔细考虑。博文中的修改并没有体现出`scull_p_setup_cdev()`里分配的buffer在哪里被清理。而且`scull_p_setup_cdev`是无返回类型的，但里面却有一句`return -ENOMEM;`
 
 
 ## 附加1 Android驱动程序开发
@@ -138,7 +141,7 @@ http://www.ibm.com/developerworks/cn/linux/l-proc.html
 - What If I Want to Print LOTS of Data?
 - 了解到参数`*sfile`, `*v`, `*pos`到意义和使用
 
-做过这个例子再去看《LDD3》的这个小结，会有更清晰的理解。
+做过这个例子再去看《LDD3》的这个小节，会有更清晰的理解。
 
 **需要说明的是**
 在最新的内核里(linux 3.13.0)，这个例子有一点小bug，也就是前面提到很多次的`create_proc_entry()`被`proc_create()`取代

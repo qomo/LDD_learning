@@ -456,6 +456,7 @@ void scull_cleanup_module(void)
     unregister_chrdev_region(devno, scull_nr_devs);
 
     /* and call the cleanup functions for friend devices */
+    scull_p_cleanup();
 }
 
 

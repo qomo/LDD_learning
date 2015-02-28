@@ -38,7 +38,7 @@ struct scull_pipe {
     char *buffer, *end;                 /* begin of buf, end of buf */
     int buffersize;                     /* used in pointer arithmetic */
     char *rp, *wp;                      /* where to read, where to write */
-    int nreaers, nwriters;              /* number of openings for r/w */
+    int nreaders, nwriters;              /* number of openings for r/w */
     struct fasync_struct *async_queue;  /* asynchronous readers */
     struct mutex mutex;                 /* mutual exclusion semaphore */
     struct cdev cdev;
@@ -46,6 +46,7 @@ struct scull_pipe {
 
 /* parameters */
 static int scull_p_nr_devs = SCULL_P_NR_DEVS;   /* number of pipe devices */
+int scull_p_buffer = SCULL_P_BUFFER;    /* buffer size */
 dev_t scull_p_devno;    /* Our first device number */
 
 static struct scull_pipe *scull_p_devices;
@@ -53,6 +54,59 @@ static struct scull_pipe *scull_p_devices;
 
 static int spacefree(struct scull_pipe *dev);
 
+/*
+ * Open and close
+ */
+static int scull_p_open(struct inode *inode, struct file *filp)
+{
+    struct scull_pipe *dev;
+
+    dev = container_of(inode->i_cdev, struct scull_pipe, cdev);
+    filp->private_data = dev;
+
+    if (mutex_lock_interruptible(&dev->mutex))
+        return -ERESTARTSYS;
+
+    if (!dev->buffer) {
+        /* allocate the buffer */
+        dev->buffer = kmalloc(scull_p_buffer, GFP_KERNEL);
+        if (!dev->buffer) {
+            mutex_unlock(&dev->mutex);
+            return -ENOMEM;
+        }
+    }
+    dev->buffersize = scull_p_buffer;
+    dev->end = dev->buffer + dev->buffersize;
+    dev->rp = dev->wp = dev->buffer;    /* rd and wr from the beginning */
+
+    /* use f_mode, not f_flags: it's cleaner (fs/open.c tells why) */
+    if (filp->f_mode & FMODE_READ)
+        dev->nreaders++;
+    if (filp->f_mode & FMODE_WRITE)
+        dev->nwriters++;
+    mutex_unlock(&dev->mutex);
+
+    return nonseekable_open(inode, filp);
+}
+
+static int scull_p_release(struct inode *inode, struct file *filp)
+{
+    struct scull_pipe *dev = filp->private_data;
+
+    /* remove this filp from the asynchronously notified filp's */
+    //scull_p_fasync(-1, filp, 0);
+    mutex_lock_interruptible(&dev->mutex);
+    if (filp->f_mode & FMODE_READ)
+        dev->nreaders--;
+    if (filp->f_mode & FMODE_WRITE)
+        dev->nwriters--;
+    if (dev->nreaders + dev->nwriters == 0) {
+        kfree(dev->buffer);
+        dev->buffer = NULL;  /* the other fields are not checked on open */
+    }
+    mutex_unlock(&dev->mutex);
+    return 0;
+}
 
 /*
  * Data managment: read and write
@@ -168,10 +222,10 @@ static ssize_t scull_p_write(struct file *filp, const char __user *buf, size_t c
 /* FIXME this should use seq_file */
 #ifdef SCULL_DEBUG
 
-static int scull_read_p_mem(struct seq_file *s, void *v)
-{
-
-}
+//static int scull_read_p_mem(struct seq_file *s, void *v)
+//{
+//
+//}
 
 #endif 
 
@@ -186,8 +240,8 @@ struct file_operations scull_pipe_fops = {
     .write =    scull_p_write,
 //    .poll =     scull_p_poll,
 //    .unlocked_ioctl =   scull_ioctl,
-//    .open =     scull_p_open,
-//    .release =  scull_p_release,
+    .open =     scull_p_open,
+    .release =  scull_p_release,
 //    .fasync =   scull_p_fasync,
 };
 
@@ -197,7 +251,7 @@ struct file_operations scull_pipe_fops = {
 static void scull_p_setup_cdev(struct scull_pipe *dev, int index)
 {
     int err, devno = scull_p_devno + index;
-    
+   
     cdev_init(&dev->cdev, &scull_pipe_fops);
     dev->cdev.owner = THIS_MODULE;
     err = cdev_add(&dev->cdev, devno, 1);
@@ -233,7 +287,31 @@ int scull_p_init(dev_t firstdev)
     }
 
 #ifdef SCULL_DEBUG
-    proc_create("scullpipe", 0, NULL, scull_read_p_mem);
+//    proc_create("scullpipe", 0, NULL, scull_read_p_mem);
 #endif 
     return scull_p_nr_devs;
+}
+
+/*
+ * This is called by cleanup_module or on failure.
+ * It is required to never fail, even if nothing was initialized first
+ */
+void scull_p_cleanup(void)
+{
+    int i;
+
+#ifdef SCULL_DEBUG
+    remove_proc_entry("scullpipe", NULL);
+#endif
+
+    if (!scull_p_devices)
+        return;     /* nothing else to release */
+    
+    for (i = 0; i < scull_p_nr_devs; i++) {
+        cdev_del(&scull_p_devices[i].cdev);
+        kfree(scull_p_devices[i].buffer);
+    }
+    kfree(scull_p_devices);
+    unregister_chrdev_region(scull_p_devno, scull_p_nr_devs);
+    scull_p_devices = NULL; /* pedantic */
 }

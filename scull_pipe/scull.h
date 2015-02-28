@@ -40,6 +40,13 @@
 #endif 
 
 /*
+ * The pipe device is a simple circular buffer. Here its default size 
+ */
+#ifndef SCULL_P_BUFFER
+#define SCULL_P_BUFFER 4000 
+#endif
+
+/*
  * The bare device is a variable-length region of memory.
  * Use a linked list of indirect blocks.
  *
@@ -123,5 +130,6 @@
  * Prototypes for shared functions
  */
 int     scull_p_init(dev_t dev);
+void    scull_p_cleanup(void);
 
 #endif /* SCULL_H */
