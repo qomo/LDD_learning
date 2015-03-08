@@ -87,6 +87,12 @@ http://stackoverflow.com/questions/1063564/unlocked-ioctl-vs-normal-ioctl
 - 源码解读：http://blog.csdn.net/liuhaoyutz/article/details/7395057
  - 文中说源码有bug，但我想应该再仔细考虑。博文中的修改并没有体现出`scull_p_setup_cdev()`里分配的buffer在哪里被清理。而且`scull_p_setup_cdev`是无返回类型的，但里面却有一句`return -ENOMEM;`
 
+### poll和select
+- 源码目录－－/scull_poll
+- 要理解驱动程序中poll函数的作用和实现，必须先理解用户空间中poll和select函数的用法。
+ - http://blog.csdn.net/liuhaoyutz/article/details/7400037
+- 用户空间的poll和select系统调用
+- 驱动程序poll的实现
 
 ## 附加1 Android驱动程序开发
 

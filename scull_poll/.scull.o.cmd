@@ -1,0 +1,1 @@
+cmd_/home/thinkpad/LDD_learning/scull_poll/scull.o := ld -m elf_x86_64   -r -o /home/thinkpad/LDD_learning/scull_poll/scull.o /home/thinkpad/LDD_learning/scull_poll/main.o /home/thinkpad/LDD_learning/scull_poll/pipe.o 
