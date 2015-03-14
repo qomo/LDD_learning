@@ -11,6 +11,7 @@ http://www.kerneltravel.net/?page_id=476
 http://blog.csdn.net/liuhaoyutz
 * 源码 
 https://github.com/duxing2007/ldd3-examples-3.x
+* 《精通LINUX设备驱动开发》—— 这本书也很不错，适合入门，部分例子来源这本书
 
 ## 第一章 设备驱动程序简介
 * Linux Kernel 编译
