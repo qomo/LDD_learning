@@ -52,8 +52,9 @@ http://blog.csdn.net/liuhaoyutz/article/details/7383313
 http://blog.csdn.net/liuhaoyutz/article/details/8500300
 
 ### NOTE
-* 源码使用了与书本不同的加锁方式（mutex和semaphore）
+* 源码使用了与书本不同的加锁方式（mutex和semaphore）  
 http://www.geeksforgeeks.org/mutex-vs-semaphore/
+* globalmem这个例子应该来自《Linux设备驱动开发详解》一书（第六章）
 
 ## 第四章 调试技术
 
