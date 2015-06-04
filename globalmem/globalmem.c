@@ -102,7 +102,6 @@ static void globalmem_setup_cdev(struct globalmem_dev *dev, int index)
 
     cdev_init(&dev->cdev, &globalmem_fops);
     dev->cdev.owner = THIS_MODULE;
-    dev->cdev.ops = &globalmem_fops;
     ret = cdev_add(&dev->cdev, devno, 1);
     if(ret){
         printk("adding globalmem error");
