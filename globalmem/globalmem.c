@@ -44,7 +44,7 @@ static ssize_t globalmem_read(struct file *filp, char __user *buf, size_t size, 
 
     // 分析和获取有效的写长度
     if (p >= GLOBALMEM_SIZE)
-        return count ? - ENXIO: 0;
+        return 0;
     if (count > GLOBALMEM_SIZE - p)
         count = GLOBALMEM_SIZE - p;
 
@@ -86,6 +86,57 @@ static ssize_t globalmem_write(struct file *filp, const char __user *buf, size_t
     return ret;
 }
 
+static loff_t globalmem_llseek(struct file *filp, loff_t offset, int orig)
+{
+    loff_t ret;
+    switch (orig) {
+        case 0:     /*从文件开头开始偏移*/
+        if (offset < 0) {
+            ret = -EINVAL;
+            break;
+        }
+        if ((unsigned int) offset > GLOBALMEM_SIZE){
+            ret = -EINVAL;
+            break;
+        }
+        filp->f_pos = (unsigned int) offset;
+        ret = filp->f_pos;
+        break;
+
+        case 1:     /*从当前位置开始偏移*/
+        if ((filp->f_pos + offset) > GLOBALMEM_SIZE) {
+            ret = -EINVAL;
+            break;
+        }
+        if ((filp->f_pos + offset) < 0){
+            ret = -EINVAL;
+            break;
+        }
+        filp->f_pos += offset;
+        ret = filp->f_pos;
+        break;
+
+        default:
+            ret = -EINVAL;
+    }
+    return ret;
+}
+
+long globalmem_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+{
+    switch(cmd) {
+        case MEM_CLEAR:
+        /* 清楚全局内存*/
+        memset(globalmem_devp->mem, 0, GLOBALMEM_SIZE);
+        printk(KERN_INFO "globalmem is set to zero\n");
+        break;
+
+        default:
+        return -EINVAL; /*其他不支持的命令*/
+    }
+    return 0;
+}
+
 static const struct file_operations globalmem_fops = 
 {
     .owner = THIS_MODULE,
@@ -93,6 +144,8 @@ static const struct file_operations globalmem_fops =
     .write = globalmem_write,
     .open = globalmem_open,
     .release = globalmem_release,
+    .llseek = globalmem_llseek,
+    .unlocked_ioctl = globalmem_ioctl,
 };
 
 static void globalmem_setup_cdev(struct globalmem_dev *dev, int index)
