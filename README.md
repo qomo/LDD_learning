@@ -69,11 +69,13 @@ http://www.linux.com/learn/linux-career-center/37985-the-kernel-newbie-corner-ke
 
 
 ## 第五章 并发和竟态
-
+scull源码使用的是互斥体  
+《Linux设备驱动开发详解》一书中的globalmem使用的是信号量
 
 ### NOTE
-* 源码使用了与书本不同的加锁方式（mutex和semaphore）
+* 源码使用了与书本不同的加锁方式（mutex和semaphore）  
 http://www.geeksforgeeks.org/mutex-vs-semaphore/
+* 也可以看看《Linux设备驱动开发详解》 第7章
 
 ## 第六章 高级字符驱动程序操作
 ### ioctl小节

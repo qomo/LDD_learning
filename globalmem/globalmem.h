@@ -16,5 +16,6 @@
 // globalmem设备结构体
 struct globalmem_dev{
     struct cdev cdev;   //cdev struct which the kernel has define
-    unsigned char mem[GLOBALMEM_SIZE];  //globalmem memory
+    unsigned char mem[GLOBALMEM_SIZE];  //globalmem memory 
+    struct semaphore sem;   //并发控制用的信号量
 };

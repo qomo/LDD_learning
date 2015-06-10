@@ -13,6 +13,7 @@
 #include <linux/slab.h>
 #include <linux/cdev.h>
 #include <asm/uaccess.h>
+#include <linux/semaphore.h>
 
 #include "globalmem.h"
 
@@ -48,6 +49,9 @@ static ssize_t globalmem_read(struct file *filp, char __user *buf, size_t size, 
     if (count > GLOBALMEM_SIZE - p)
         count = GLOBALMEM_SIZE - p;
 
+    if (down_interruptible(&dev->sem))  /*获得信号量*/
+        return -ERESTARTSYS;
+
     // 内核空间->用户空间
     if (copy_to_user(buf, (void*)(dev->mem + p), count))
     {
@@ -59,6 +63,7 @@ static ssize_t globalmem_read(struct file *filp, char __user *buf, size_t size, 
         ret = count;
         printk(KERN_INFO "read %d bytes(s) from %d\n", count, p);
     }
+    up(&dev->sem);  /*释放信号量*/
     return ret;
 }
 
@@ -74,6 +79,9 @@ static ssize_t globalmem_write(struct file *filp, const char __user *buf, size_t
     if (count > GLOBALMEM_SIZE - p)     //要写的字节数太多
         count = GLOBALMEM_SIZE - p;
 
+    if (down_interruptible(&dev->sem))  /*获得信号量*/
+        return -ERESTARTSYS;
+
     // 用户空间->内核空间 
     if (copy_from_user(dev->mem + p, buf, count))
         ret = -EFAULT;
@@ -83,6 +91,7 @@ static ssize_t globalmem_write(struct file *filp, const char __user *buf, size_t
         ret = count;
         printk(KERN_INFO "writen %d bytes(s) from %d\n", count, p);
     }
+    up(&dev->sem);  /*释放信号量*/
     return ret;
 }
 
@@ -124,10 +133,16 @@ static loff_t globalmem_llseek(struct file *filp, loff_t offset, int orig)
 
 long globalmem_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
+    struct globalmem_dev *dev = filp->private_data;
     switch(cmd) {
         case MEM_CLEAR:
+        if (down_interruptible(&dev->sem))  /*获得信号量*/
+            return -ERESTARTSYS;
+
         /* 清楚全局内存*/
-        memset(globalmem_devp->mem, 0, GLOBALMEM_SIZE);
+        memset(dev->mem, 0, GLOBALMEM_SIZE);
+        up(&dev->sem);  /*释放信号量*/
+
         printk(KERN_INFO "globalmem is set to zero\n");
         break;
 
@@ -189,6 +204,7 @@ static int globalmem_init(void)
     memset(globalmem_devp,0,sizeof(struct globalmem_dev));
 
     globalmem_setup_cdev(globalmem_devp,0);
+    sema_init(&globalmem_devp->sem, 1);   /*初始化信号量*/
     return 0;
 fail_malloc:unregister_chrdev_region(devno,1);
     return result;
