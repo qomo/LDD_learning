@@ -162,6 +162,7 @@ http://www.ibm.com/developerworks/cn/linux/l-proc.html
 - 生成标签：`ctags -R .`
 
 > 会在当前目录生成一个tags文件，里面记录着函数和变量等的定义和使用的位置。
+
 - 当前目录下用vim打开你要查阅的源码文件，可以使用下面的几个命令：
 
 |Keyboard command	| Action				    |
