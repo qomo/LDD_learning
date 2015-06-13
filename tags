@@ -1,0 +1,615 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CMOS_BANK0_DATA_PORT	CMOS/main.c	46;"	d	file:
+CMOS_BANK0_INDEX_PORT	CMOS/main.c	45;"	d	file:
+CMOS_BANK1_DATA_PORT	CMOS/main.c	48;"	d	file:
+CMOS_BANK1_INDEX_PORT	CMOS/main.c	47;"	d	file:
+CMOS_BANK_SIZE	CMOS/main.c	43;"	d	file:
+CURRENT_PATH	CMOS/Makefile	/^CURRENT_PATH:=$(shell pwd)$/;"	m
+CURRENT_PATH	double_list/Makefile	/^CURRENT_PATH:=$(shell pwd)$/;"	m
+CURRENT_PATH	globalfifo/Makefile	/^CURRENT_PATH:=$(shell pwd)$/;"	m
+CURRENT_PATH	globalmem/Makefile	/^CURRENT_PATH:=$(shell pwd)$/;"	m
+CURRENT_PATH	globalmem_procfs/Makefile	/^CURRENT_PATH:=$(shell pwd)$/;"	m
+CURRENT_PATH	hello_kernel/Makefile	/^CURRENT_PATH:=$(shell pwd)$/;"	m
+CURRENT_PATH	proc_evens/Makefile	/^CURRENT_PATH:=$(shell pwd)$/;"	m
+CURRENT_PATH	proc_hz/Makefile	/^CURRENT_PATH:=$(shell pwd)$/;"	m
+CURRENT_PATH	scull/Makefile	/^CURRENT_PATH:=$(shell pwd)$/;"	m
+CUR_PATH	paramirq/Makefile	/^CUR_PATH:=$(shell uname -r)$/;"	m
+DEBFLAGS	scull_ioctl/Makefile	/^  DEBFLAGS = -O -g -DSCULL_DEBUG # "-O" is needed to expand inlines$/;"	m
+DEBFLAGS	scull_ioctl/Makefile	/^  DEBFLAGS = -O2$/;"	m
+DEBFLAGS	scull_pipe/Makefile	/^  DEBFLAGS = -O -g -DSCULL_DEBUG # "-O" is needed to expand inlines$/;"	m
+DEBFLAGS	scull_pipe/Makefile	/^  DEBFLAGS = -O2$/;"	m
+DEBFLAGS	scull_poll/Makefile	/^  DEBFLAGS = -O -g -DSCULL_DEBUG # "-O" is needed to expand inlines$/;"	m
+DEBFLAGS	scull_poll/Makefile	/^  DEBFLAGS = -O2$/;"	m
+DEBFLAGS	scull_proc/Makefile	/^  DEBFLAGS = -O -g -DSCULL_DEBUG # "-O" is needed to expand inlines$/;"	m
+DEBFLAGS	scull_proc/Makefile	/^  DEBFLAGS = -O2$/;"	m
+DEBUG	scull_ioctl/Makefile	/^DEBUG = y$/;"	m
+DEBUG	scull_pipe/Makefile	/^DEBUG = y$/;"	m
+DEBUG	scull_poll/Makefile	/^DEBUG = y$/;"	m
+DEBUG	scull_proc/Makefile	/^DEBUG = y$/;"	m
+DEVICE_NAME	CMOS/main.c	44;"	d	file:
+EXAMPLE_DEVICE_CLASS_NAME	Volumes/android/msm/drivers/example/example.h	10;"	d
+EXAMPLE_DEVICE_FILE_NAME	Volumes/android/msm/drivers/example/example.h	8;"	d
+EXAMPLE_DEVICE_NODE_NAME	Volumes/android/msm/drivers/example/example.h	7;"	d
+EXAMPLE_DEVICE_PROC_NAME	Volumes/android/msm/drivers/example/example.h	9;"	d
+EXAMPLE_MAJOR	Volumes/android/msm/drivers/example/example.h	11;"	d
+GLOBALMEM_MAJOR	globalfifo/globalmem.h	14;"	d
+GLOBALMEM_MAJOR	globalmem/globalmem.h	14;"	d
+GLOBALMEM_MAJOR	globalmem_procfs/globalmem.h	14;"	d
+GLOBALMEM_SIZE	globalfifo/globalmem.h	12;"	d
+GLOBALMEM_SIZE	globalmem/globalmem.h	12;"	d
+GLOBALMEM_SIZE	globalmem_procfs/globalmem.h	12;"	d
+KERNELDIR	scull_ioctl/Makefile	/^KERNELDIR ?= \/lib\/modules\/$(shell uname -r)\/build$/;"	m
+KERNELDIR	scull_pipe/Makefile	/^KERNELDIR ?= \/lib\/modules\/$(shell uname -r)\/build$/;"	m
+KERNELDIR	scull_poll/Makefile	/^KERNELDIR ?= \/lib\/modules\/$(shell uname -r)\/build$/;"	m
+KERNELDIR	scull_proc/Makefile	/^KERNELDIR ?= \/lib\/modules\/$(shell uname -r)\/build$/;"	m
+KERNELPATH	paramirq/Makefile	/^KERNELPATH:=\/usr\/src\/linux-headers-$(CUR_PATH)$/;"	m
+LDDINC	scull_pipe/Makefile	/^LDDINC=$(PWD)\/..\/include$/;"	m
+LDDINC	scull_poll/Makefile	/^LDDINC=$(PWD)\/..\/include$/;"	m
+LINUX_KERNEL	CMOS/Makefile	/^LINUX_KERNEL:=$(shell uname -r)$/;"	m
+LINUX_KERNEL	double_list/Makefile	/^LINUX_KERNEL:=$(shell uname -r)$/;"	m
+LINUX_KERNEL	globalfifo/Makefile	/^LINUX_KERNEL:=$(shell uname -r)$/;"	m
+LINUX_KERNEL	globalmem/Makefile	/^LINUX_KERNEL:=$(shell uname -r)$/;"	m
+LINUX_KERNEL	globalmem_procfs/Makefile	/^LINUX_KERNEL:=$(shell uname -r)$/;"	m
+LINUX_KERNEL	hello_kernel/Makefile	/^LINUX_KERNEL:=$(shell uname -r)$/;"	m
+LINUX_KERNEL	proc_evens/Makefile	/^LINUX_KERNEL:=$(shell uname -r)$/;"	m
+LINUX_KERNEL	proc_hz/Makefile	/^LINUX_KERNEL:=$(shell uname -r)$/;"	m
+LINUX_KERNEL	scull/Makefile	/^LINUX_KERNEL:=$(shell uname -r)$/;"	m
+LINUX_KERNEL_PATH	CMOS/Makefile	/^LINUX_KERNEL_PATH:=\/usr\/src\/linux-headers-$(LINUX_KERNEL)$/;"	m
+LINUX_KERNEL_PATH	double_list/Makefile	/^LINUX_KERNEL_PATH:=\/usr\/src\/linux-headers-$(LINUX_KERNEL)$/;"	m
+LINUX_KERNEL_PATH	globalfifo/Makefile	/^LINUX_KERNEL_PATH:=\/usr\/src\/linux-headers-$(LINUX_KERNEL)$/;"	m
+LINUX_KERNEL_PATH	globalmem/Makefile	/^LINUX_KERNEL_PATH:=\/usr\/src\/linux-headers-$(LINUX_KERNEL)$/;"	m
+LINUX_KERNEL_PATH	globalmem_procfs/Makefile	/^LINUX_KERNEL_PATH:=\/usr\/src\/linux-headers-$(LINUX_KERNEL)$/;"	m
+LINUX_KERNEL_PATH	hello_kernel/Makefile	/^LINUX_KERNEL_PATH:=\/usr\/src\/linux-headers-$(LINUX_KERNEL)$/;"	m
+LINUX_KERNEL_PATH	proc_evens/Makefile	/^LINUX_KERNEL_PATH:=\/usr\/src\/linux-headers-$(LINUX_KERNEL)$/;"	m
+LINUX_KERNEL_PATH	proc_hz/Makefile	/^LINUX_KERNEL_PATH:=\/usr\/src\/linux-headers-$(LINUX_KERNEL)$/;"	m
+LINUX_KERNEL_PATH	scull/Makefile	/^LINUX_KERNEL_PATH:=\/usr\/src\/linux-headers-$(LINUX_KERNEL)$/;"	m
+MEM_CLEAR	globalfifo/globalmem.h	13;"	d
+MEM_CLEAR	globalmem/globalmem.h	13;"	d
+MEM_CLEAR	globalmem_procfs/globalmem.h	13;"	d
+N	double_list/double_list.c	10;"	d	file:
+NUM_CMOS_BANKS	CMOS/main.c	18;"	d	file:
+PDEBUG	scull_pipe/scull.h	14;"	d
+PDEBUG	scull_pipe/scull.h	18;"	d
+PDEBUG	scull_pipe/scull.h	21;"	d
+PDEBUG	scull_pipe/scull.h	24;"	d
+PDEBUG	scull_poll/scull.h	14;"	d
+PDEBUG	scull_poll/scull.h	18;"	d
+PDEBUG	scull_poll/scull.h	21;"	d
+PDEBUG	scull_poll/scull.h	24;"	d
+PDEBUGG	scull_pipe/scull.h	27;"	d
+PDEBUGG	scull_pipe/scull.h	28;"	d
+PDEBUGG	scull_poll/scull.h	27;"	d
+PDEBUGG	scull_poll/scull.h	28;"	d
+PWD	paramirq/Makefile	/^PWD:=$(shell pwd)$/;"	m
+PWD	scull_ioctl/Makefile	/^PWD       := $(shell pwd)$/;"	m
+PWD	scull_pipe/Makefile	/^PWD       := $(shell pwd)$/;"	m
+PWD	scull_poll/Makefile	/^PWD       := $(shell pwd)$/;"	m
+PWD	scull_proc/Makefile	/^PWD       := $(shell pwd)$/;"	m
+SCULL_DEVICE	scull_ioctl/example/scull_ioctl.c	15;"	d	file:
+SCULL_DEVICE	scull_pipe/example/scull_ioctl.c	15;"	d	file:
+SCULL_IOCGQSET	scull_ioctl/example/scull_ioctl.h	36;"	d
+SCULL_IOCGQSET	scull_ioctl/scull.h	80;"	d
+SCULL_IOCGQSET	scull_pipe/example/scull_ioctl.h	36;"	d
+SCULL_IOCGQSET	scull_pipe/scull.h	110;"	d
+SCULL_IOCGQSET	scull_poll/scull.h	110;"	d
+SCULL_IOCGQUANTUM	scull_ioctl/example/scull_ioctl.h	35;"	d
+SCULL_IOCGQUANTUM	scull_ioctl/scull.h	79;"	d
+SCULL_IOCGQUANTUM	scull_pipe/example/scull_ioctl.h	35;"	d
+SCULL_IOCGQUANTUM	scull_pipe/scull.h	109;"	d
+SCULL_IOCGQUANTUM	scull_poll/scull.h	109;"	d
+SCULL_IOCHQSET	scull_ioctl/example/scull_ioctl.h	42;"	d
+SCULL_IOCHQSET	scull_ioctl/scull.h	86;"	d
+SCULL_IOCHQSET	scull_pipe/example/scull_ioctl.h	42;"	d
+SCULL_IOCHQSET	scull_pipe/scull.h	116;"	d
+SCULL_IOCHQSET	scull_poll/scull.h	116;"	d
+SCULL_IOCHQUANTUM	scull_ioctl/example/scull_ioctl.h	41;"	d
+SCULL_IOCHQUANTUM	scull_ioctl/scull.h	85;"	d
+SCULL_IOCHQUANTUM	scull_pipe/example/scull_ioctl.h	41;"	d
+SCULL_IOCHQUANTUM	scull_pipe/scull.h	115;"	d
+SCULL_IOCHQUANTUM	scull_poll/scull.h	115;"	d
+SCULL_IOCQQSET	scull_ioctl/example/scull_ioctl.h	38;"	d
+SCULL_IOCQQSET	scull_ioctl/scull.h	82;"	d
+SCULL_IOCQQSET	scull_pipe/example/scull_ioctl.h	38;"	d
+SCULL_IOCQQSET	scull_pipe/scull.h	112;"	d
+SCULL_IOCQQSET	scull_poll/scull.h	112;"	d
+SCULL_IOCQQUANTUM	scull_ioctl/example/scull_ioctl.h	37;"	d
+SCULL_IOCQQUANTUM	scull_ioctl/scull.h	81;"	d
+SCULL_IOCQQUANTUM	scull_pipe/example/scull_ioctl.h	37;"	d
+SCULL_IOCQQUANTUM	scull_pipe/scull.h	111;"	d
+SCULL_IOCQQUANTUM	scull_poll/scull.h	111;"	d
+SCULL_IOCRESET	scull_ioctl/example/scull_ioctl.h	21;"	d
+SCULL_IOCRESET	scull_ioctl/scull.h	64;"	d
+SCULL_IOCRESET	scull_pipe/example/scull_ioctl.h	21;"	d
+SCULL_IOCRESET	scull_pipe/scull.h	94;"	d
+SCULL_IOCRESET	scull_poll/scull.h	94;"	d
+SCULL_IOCSQSET	scull_ioctl/example/scull_ioctl.h	32;"	d
+SCULL_IOCSQSET	scull_ioctl/scull.h	76;"	d
+SCULL_IOCSQSET	scull_pipe/example/scull_ioctl.h	32;"	d
+SCULL_IOCSQSET	scull_pipe/scull.h	106;"	d
+SCULL_IOCSQSET	scull_poll/scull.h	106;"	d
+SCULL_IOCSQUANTUM	scull_ioctl/example/scull_ioctl.h	31;"	d
+SCULL_IOCSQUANTUM	scull_ioctl/scull.h	75;"	d
+SCULL_IOCSQUANTUM	scull_pipe/example/scull_ioctl.h	31;"	d
+SCULL_IOCSQUANTUM	scull_pipe/scull.h	105;"	d
+SCULL_IOCSQUANTUM	scull_poll/scull.h	105;"	d
+SCULL_IOCTQSET	scull_ioctl/example/scull_ioctl.h	34;"	d
+SCULL_IOCTQSET	scull_ioctl/scull.h	78;"	d
+SCULL_IOCTQSET	scull_pipe/example/scull_ioctl.h	34;"	d
+SCULL_IOCTQSET	scull_pipe/scull.h	108;"	d
+SCULL_IOCTQSET	scull_poll/scull.h	108;"	d
+SCULL_IOCTQUANTUM	scull_ioctl/example/scull_ioctl.h	33;"	d
+SCULL_IOCTQUANTUM	scull_ioctl/scull.h	77;"	d
+SCULL_IOCTQUANTUM	scull_pipe/example/scull_ioctl.h	33;"	d
+SCULL_IOCTQUANTUM	scull_pipe/scull.h	107;"	d
+SCULL_IOCTQUANTUM	scull_poll/scull.h	107;"	d
+SCULL_IOCXQSET	scull_ioctl/example/scull_ioctl.h	40;"	d
+SCULL_IOCXQSET	scull_ioctl/scull.h	84;"	d
+SCULL_IOCXQSET	scull_pipe/example/scull_ioctl.h	40;"	d
+SCULL_IOCXQSET	scull_pipe/scull.h	114;"	d
+SCULL_IOCXQSET	scull_poll/scull.h	114;"	d
+SCULL_IOCXQUANTUM	scull_ioctl/example/scull_ioctl.h	39;"	d
+SCULL_IOCXQUANTUM	scull_ioctl/scull.h	83;"	d
+SCULL_IOCXQUANTUM	scull_pipe/example/scull_ioctl.h	39;"	d
+SCULL_IOCXQUANTUM	scull_pipe/scull.h	113;"	d
+SCULL_IOCXQUANTUM	scull_poll/scull.h	113;"	d
+SCULL_IOC_MAGIC	scull_ioctl/example/scull_ioctl.h	18;"	d
+SCULL_IOC_MAGIC	scull_ioctl/scull.h	60;"	d
+SCULL_IOC_MAGIC	scull_pipe/example/scull_ioctl.h	18;"	d
+SCULL_IOC_MAGIC	scull_pipe/scull.h	90;"	d
+SCULL_IOC_MAGIC	scull_poll/scull.h	90;"	d
+SCULL_IOC_MAXNR	scull_ioctl/example/scull_ioctl.h	53;"	d
+SCULL_IOC_MAXNR	scull_ioctl/scull.h	97;"	d
+SCULL_IOC_MAXNR	scull_pipe/example/scull_ioctl.h	53;"	d
+SCULL_IOC_MAXNR	scull_pipe/scull.h	127;"	d
+SCULL_IOC_MAXNR	scull_poll/scull.h	127;"	d
+SCULL_MAJOR	scull/scull.h	12;"	d
+SCULL_MAJOR	scull_ioctl/scull.h	12;"	d
+SCULL_MAJOR	scull_pipe/scull.h	31;"	d
+SCULL_MAJOR	scull_poll/scull.h	31;"	d
+SCULL_MAJOR	scull_proc/scull.h	12;"	d
+SCULL_NR_DEVS	scull/scull.h	16;"	d
+SCULL_NR_DEVS	scull_ioctl/scull.h	16;"	d
+SCULL_NR_DEVS	scull_pipe/scull.h	35;"	d
+SCULL_NR_DEVS	scull_poll/scull.h	35;"	d
+SCULL_NR_DEVS	scull_proc/scull.h	16;"	d
+SCULL_P_BUFFER	scull_pipe/scull.h	46;"	d
+SCULL_P_BUFFER	scull_poll/scull.h	46;"	d
+SCULL_P_IOCQSIZE	scull_ioctl/example/scull_ioctl.h	50;"	d
+SCULL_P_IOCQSIZE	scull_ioctl/scull.h	94;"	d
+SCULL_P_IOCQSIZE	scull_pipe/example/scull_ioctl.h	50;"	d
+SCULL_P_IOCQSIZE	scull_pipe/scull.h	124;"	d
+SCULL_P_IOCQSIZE	scull_poll/scull.h	124;"	d
+SCULL_P_IOCTSIZE	scull_ioctl/example/scull_ioctl.h	49;"	d
+SCULL_P_IOCTSIZE	scull_ioctl/scull.h	93;"	d
+SCULL_P_IOCTSIZE	scull_pipe/example/scull_ioctl.h	49;"	d
+SCULL_P_IOCTSIZE	scull_pipe/scull.h	123;"	d
+SCULL_P_IOCTSIZE	scull_poll/scull.h	123;"	d
+SCULL_P_NR_DEVS	scull_pipe/scull.h	39;"	d
+SCULL_P_NR_DEVS	scull_poll/scull.h	39;"	d
+SCULL_QSET	scull/scull.h	33;"	d
+SCULL_QSET	scull_ioctl/scull.h	33;"	d
+SCULL_QSET	scull_pipe/scull.h	63;"	d
+SCULL_QSET	scull_poll/scull.h	63;"	d
+SCULL_QSET	scull_proc/scull.h	33;"	d
+SCULL_QUANTUM	scull/scull.h	29;"	d
+SCULL_QUANTUM	scull_ioctl/scull.h	29;"	d
+SCULL_QUANTUM	scull_pipe/scull.h	59;"	d
+SCULL_QUANTUM	scull_poll/scull.h	59;"	d
+SCULL_QUANTUM	scull_proc/scull.h	29;"	d
+_CHARMODULE_H	globalfifo/globalmem.h	9;"	d
+_CHARMODULE_H	globalmem/globalmem.h	9;"	d
+_CHARMODULE_H	globalmem_procfs/globalmem.h	9;"	d
+_EXAMPLE_H_	Volumes/android/msm/drivers/example/example.h	2;"	d
+_SCULL_H	scull/scull.h	9;"	d
+_SCULL_H	scull_ioctl/scull.h	9;"	d
+_SCULL_H	scull_pipe/scull.h	9;"	d
+_SCULL_H	scull_poll/scull.h	9;"	d
+_SCULL_H	scull_proc/scull.h	9;"	d
+_SCULL_IOCTL_H	scull_ioctl/example/scull_ioctl.h	9;"	d
+_SCULL_IOCTL_H	scull_pipe/example/scull_ioctl.h	9;"	d
+__example_get_val	Volumes/android/msm/drivers/example/example.c	/^static ssize_t __example_get_val(struct example_dev* dev, char* buf)$/;"	f	file:
+__example_set_val	Volumes/android/msm/drivers/example/example.c	/^static ssize_t __example_set_val(struct example_dev* dev, const char* buf, size_t count)$/;"	f	file:
+__example_setup_dev	Volumes/android/msm/drivers/example/example.c	/^static int __example_setup_dev(struct example_dev* dev)$/;"	f	file:
+__this_module	CMOS/main.mod.c	/^struct module __this_module$/;"	v	typeref:struct:module
+__this_module	double_list/double_list.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	scull_poll/scull.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__used	CMOS/main.mod.c	/^__used$/;"	v	file:
+__used	CMOS/main.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	double_list/double_list.mod.c	/^__used$/;"	v	file:
+__used	double_list/double_list.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	scull_poll/scull.mod.c	/^__used$/;"	v	file:
+__used	scull_poll/scull.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+access_key	scull/scull.h	/^     unsigned int access_key;   \/* used by sculluid and scullpriv *\/$/;"	m	struct:scull_dev
+access_key	scull_ioctl/scull.h	/^     unsigned int access_key;   \/* used by sculluid and scullpriv *\/$/;"	m	struct:scull_dev
+access_key	scull_pipe/scull.h	/^     unsigned int access_key;   \/* used by sculluid and scullpriv *\/$/;"	m	struct:scull_dev
+access_key	scull_poll/scull.h	/^     unsigned int access_key;   \/* used by sculluid and scullpriv *\/$/;"	m	struct:scull_dev
+access_key	scull_proc/scull.h	/^     unsigned int access_key;   \/* used by sculluid and scullpriv *\/$/;"	m	struct:scull_dev
+addrports	CMOS/main.c	/^unsigned char addrports[NUM_CMOS_BANKS] = {CMOS_BANK0_INDEX_PORT,$/;"	v
+async_queue	scull_pipe/pipe.c	/^    struct fasync_struct *async_queue;  \/* asynchronous readers *\/$/;"	m	struct:scull_pipe	typeref:struct:scull_pipe::fasync_struct	file:
+async_queue	scull_poll/pipe.c	/^    struct fasync_struct *async_queue;  \/* asynchronous readers *\/$/;"	m	struct:scull_pipe	typeref:struct:scull_pipe::fasync_struct	file:
+bank_number	CMOS/main.c	/^    int bank_number;                    \/* CMOS bank number *\/$/;"	m	struct:cmos_dev	file:
+buffer	scull_pipe/pipe.c	/^    char *buffer, *end;                 \/* begin of buf, end of buf *\/$/;"	m	struct:scull_pipe	file:
+buffer	scull_poll/pipe.c	/^    char *buffer, *end;                 \/* begin of buf, end of buf *\/$/;"	m	struct:scull_pipe	file:
+buffersize	scull_pipe/pipe.c	/^    int buffersize;                     \/* used in pointer arithmetic *\/$/;"	m	struct:scull_pipe	file:
+buffersize	scull_poll/pipe.c	/^    int buffersize;                     \/* used in pointer arithmetic *\/$/;"	m	struct:scull_pipe	file:
+cdev	CMOS/main.c	/^    struct cdev cdev;                   \/* The cdev structure *\/$/;"	m	struct:cmos_dev	typeref:struct:cmos_dev::cdev	file:
+cdev	Volumes/android/msm/drivers/example/example.h	/^	struct cdev cdev;$/;"	m	struct:example_dev	typeref:struct:example_dev::cdev
+cdev	globalfifo/globalmem.h	/^    struct cdev cdev;   \/\/cdev struct which the kernel has define$/;"	m	struct:globalmem_dev	typeref:struct:globalmem_dev::cdev
+cdev	globalmem/globalmem.h	/^    struct cdev cdev;   \/\/cdev struct which the kernel has define$/;"	m	struct:globalmem_dev	typeref:struct:globalmem_dev::cdev
+cdev	globalmem_procfs/globalmem.h	/^    struct cdev cdev;   \/\/cdev struct which the kernel has define$/;"	m	struct:globalmem_dev	typeref:struct:globalmem_dev::cdev
+cdev	scull/scull.h	/^     struct cdev cdev;          \/* Char device structure *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::cdev
+cdev	scull_ioctl/scull.h	/^     struct cdev cdev;          \/* Char device structure *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::cdev
+cdev	scull_pipe/pipe.c	/^    struct cdev cdev;$/;"	m	struct:scull_pipe	typeref:struct:scull_pipe::cdev	file:
+cdev	scull_pipe/scull.h	/^     struct cdev cdev;          \/* Char device structure *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::cdev
+cdev	scull_poll/pipe.c	/^    struct cdev cdev;$/;"	m	struct:scull_pipe	typeref:struct:scull_pipe::cdev	file:
+cdev	scull_poll/scull.h	/^     struct cdev cdev;          \/* Char device structure *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::cdev
+cdev	scull_proc/scull.h	/^     struct cdev cdev;          \/* Char device structure *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::cdev
+cmos_class	CMOS/main.c	/^struct class *cmos_class;       \/* Tie with the device model *\/$/;"	v	typeref:struct:class
+cmos_cleanup	CMOS/main.c	/^module_exit(cmos_cleanup);$/;"	v
+cmos_cleanup	CMOS/main.c	/^void __exit cmos_cleanup(void) $/;"	f
+cmos_dev	CMOS/main.c	/^struct cmos_dev {$/;"	s	file:
+cmos_dev_number	CMOS/main.c	/^static dev_t cmos_dev_number;   \/* Allotted device number *\/$/;"	v	file:
+cmos_devp	CMOS/main.c	/^} *cmos_devp[NUM_CMOS_BANKS];$/;"	v	typeref:struct:cmos_dev
+cmos_fops	CMOS/main.c	/^static struct file_operations cmos_fops = {$/;"	v	typeref:struct:file_operations	file:
+cmos_init	CMOS/main.c	/^int __init cmos_init(void)$/;"	f
+cmos_init	CMOS/main.c	/^module_init(cmos_init);$/;"	v
+ct_exit	proc_evens/evens.c	/^module_exit(ct_exit);$/;"	v
+ct_exit	proc_evens/evens.c	/^static void ct_exit(void)$/;"	f	file:
+ct_file_ops	proc_evens/evens.c	/^static struct file_operations ct_file_ops = {$/;"	v	typeref:struct:file_operations	file:
+ct_init	proc_evens/evens.c	/^module_init(ct_init);$/;"	v
+ct_init	proc_evens/evens.c	/^static int ct_init(void)$/;"	f	file:
+ct_open	proc_evens/evens.c	/^static int ct_open(struct inode *inode, struct file *file)$/;"	f	file:
+ct_seq_next	proc_evens/evens.c	/^static void *ct_seq_next(struct seq_file *s, void *v, loff_t *pos)$/;"	f	file:
+ct_seq_ops	proc_evens/evens.c	/^static struct seq_operations ct_seq_ops = {$/;"	v	typeref:struct:seq_operations	file:
+ct_seq_show	proc_evens/evens.c	/^static int ct_seq_show(struct seq_file *s, void *v)$/;"	f	file:
+ct_seq_start	proc_evens/evens.c	/^static void *ct_seq_start(struct seq_file *s, loff_t *pos)$/;"	f	file:
+ct_seq_stop	proc_evens/evens.c	/^static void ct_seq_stop(struct seq_file *s, void *v)$/;"	f	file:
+current_pointer	CMOS/main.c	/^    unsigned short current_pointer;     \/* Current pointer within the bank *\/$/;"	m	struct:cmos_dev	file:
+data	scull/scull.h	/^     struct scull_qset *data;   \/* Pointer to first quantum set *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::scull_qset
+data	scull/scull.h	/^     void **data;$/;"	m	struct:scull_qset
+data	scull_ioctl/scull.h	/^     struct scull_qset *data;   \/* Pointer to first quantum set *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::scull_qset
+data	scull_ioctl/scull.h	/^     void **data;$/;"	m	struct:scull_qset
+data	scull_pipe/scull.h	/^     struct scull_qset *data;   \/* Pointer to first quantum set *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::scull_qset
+data	scull_pipe/scull.h	/^     void **data;$/;"	m	struct:scull_qset
+data	scull_poll/scull.h	/^     struct scull_qset *data;   \/* Pointer to first quantum set *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::scull_qset
+data	scull_poll/scull.h	/^     void **data;$/;"	m	struct:scull_qset
+data	scull_proc/scull.h	/^     struct scull_qset *data;   \/* Pointer to first quantum set *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::scull_qset
+data	scull_proc/scull.h	/^     void **data;$/;"	m	struct:scull_qset
+dataports	CMOS/main.c	/^unsigned char dataports[NUM_CMOS_BANKS] = {CMOS_BANK0_DATA_PORT,$/;"	v
+devid	paramirq/paramirq.c	/^	int devid;$/;"	m	struct:myirq	file:
+devname	paramirq/paramirq.c	/^static char* devname;$/;"	v	file:
+devno	globalfifo/globalmem.c	/^dev_t devno;$/;"	v
+devno	globalmem/globalmem.c	/^dev_t devno;$/;"	v
+devno	globalmem_procfs/globalmem.c	/^dev_t devno;$/;"	v
+doublelist_exit	double_list/double_list.c	/^module_exit(doublelist_exit);$/;"	v
+doublelist_exit	double_list/double_list.c	/^static void __exit doublelist_exit(void)$/;"	f	file:
+doublelist_init	double_list/double_list.c	/^module_init(doublelist_init);$/;"	v
+doublelist_init	double_list/double_list.c	/^static int __init doublelist_init(void)$/;"	f	file:
+end	scull_pipe/pipe.c	/^    char *buffer, *end;                 \/* begin of buf, end of buf *\/$/;"	m	struct:scull_pipe	file:
+end	scull_poll/pipe.c	/^    char *buffer, *end;                 \/* begin of buf, end of buf *\/$/;"	m	struct:scull_pipe	file:
+even_ptr	proc_evens/evens.c	/^static int* even_ptr;$/;"	v	file:
+example_class	Volumes/android/msm/drivers/example/example.c	/^static struct class* example_class = NULL;$/;"	v	typeref:struct:class	file:
+example_create_proc	Volumes/android/msm/drivers/example/example.c	/^static void example_create_proc(void)$/;"	f	file:
+example_dev	Volumes/android/msm/drivers/example/example.c	/^static struct example_dev* example_dev = NULL;$/;"	v	typeref:struct:example_dev	file:
+example_dev	Volumes/android/msm/drivers/example/example.h	/^struct example_dev$/;"	s
+example_exit	Volumes/android/msm/drivers/example/example.c	/^module_exit(example_exit);$/;"	v
+example_exit	Volumes/android/msm/drivers/example/example.c	/^static void __exit example_exit(void)$/;"	f	file:
+example_fops	Volumes/android/msm/drivers/example/example.c	/^static struct file_operations example_fops = $/;"	v	typeref:struct:file_operations	file:
+example_init	Volumes/android/msm/drivers/example/example.c	/^module_init(example_init);$/;"	v
+example_init	Volumes/android/msm/drivers/example/example.c	/^static int __init example_init(void)$/;"	f	file:
+example_major	Volumes/android/msm/drivers/example/example.c	/^static int example_major = EXAMPLE_MAJOR;$/;"	v	file:
+example_minor	Volumes/android/msm/drivers/example/example.c	/^static int example_minor = 0;$/;"	v	file:
+example_open	Volumes/android/msm/drivers/example/example.c	/^static int example_open(struct inode* inode, struct file* filp)$/;"	f	file:
+example_proc_read	Volumes/android/msm/drivers/example/example.c	/^static ssize_t example_proc_read(char* page, char** start, off_t off, int count, int* eof, void* data)$/;"	f	file:
+example_proc_write	Volumes/android/msm/drivers/example/example.c	/^static ssize_t example_proc_write(struct file* filp, const char __user *buff, unsigned long len, void* data)$/;"	f	file:
+example_read	Volumes/android/msm/drivers/example/example.c	/^static ssize_t example_read(struct file* filp, char	__user *buf, size_t count, loff_t* f_ops)$/;"	f	file:
+example_release	Volumes/android/msm/drivers/example/example.c	/^static int example_release(struct inode* inode, struct file* filp)$/;"	f	file:
+example_remove_proc	Volumes/android/msm/drivers/example/example.c	/^static void example_remove_proc(void)$/;"	f	file:
+example_val_show	Volumes/android/msm/drivers/example/example.c	/^static ssize_t example_val_show(struct device* dev, struct device_attribute *attr, char *buf)$/;"	f	file:
+example_val_store	Volumes/android/msm/drivers/example/example.c	/^static ssize_t example_val_store(struct device* dev, struct device_attribute *attr, const char *buf, size_t count)$/;"	f	file:
+example_write	Volumes/android/msm/drivers/example/example.c	/^static ssize_t example_write(struct file* filp, const char __user *buf, size_t count, loff_t* f_ops)$/;"	f	file:
+globalmem_dev	globalfifo/globalmem.h	/^struct globalmem_dev{$/;"	s
+globalmem_dev	globalmem/globalmem.h	/^struct globalmem_dev{$/;"	s
+globalmem_dev	globalmem_procfs/globalmem.h	/^struct globalmem_dev{$/;"	s
+globalmem_devp	globalfifo/globalmem.c	/^struct globalmem_dev *globalmem_devp;$/;"	v	typeref:struct:globalmem_dev
+globalmem_devp	globalmem/globalmem.c	/^struct globalmem_dev *globalmem_devp;$/;"	v	typeref:struct:globalmem_dev
+globalmem_devp	globalmem_procfs/globalmem.c	/^struct globalmem_dev *globalmem_devp;$/;"	v	typeref:struct:globalmem_dev
+globalmem_exit	globalfifo/globalmem.c	/^module_exit(globalmem_exit);$/;"	v
+globalmem_exit	globalfifo/globalmem.c	/^static void globalmem_exit(void)$/;"	f	file:
+globalmem_exit	globalmem/globalmem.c	/^module_exit(globalmem_exit);$/;"	v
+globalmem_exit	globalmem/globalmem.c	/^static void globalmem_exit(void)$/;"	f	file:
+globalmem_exit	globalmem_procfs/globalmem.c	/^module_exit(globalmem_exit);$/;"	v
+globalmem_exit	globalmem_procfs/globalmem.c	/^static void globalmem_exit(void)$/;"	f	file:
+globalmem_fops	globalfifo/globalmem.c	/^static const struct file_operations globalmem_fops = $/;"	v	typeref:struct:file_operations	file:
+globalmem_fops	globalmem/globalmem.c	/^static const struct file_operations globalmem_fops = $/;"	v	typeref:struct:file_operations	file:
+globalmem_fops	globalmem_procfs/globalmem.c	/^static const struct file_operations globalmem_fops = $/;"	v	typeref:struct:file_operations	file:
+globalmem_init	globalfifo/globalmem.c	/^module_init(globalmem_init);$/;"	v
+globalmem_init	globalfifo/globalmem.c	/^static int globalmem_init(void)$/;"	f	file:
+globalmem_init	globalmem/globalmem.c	/^module_init(globalmem_init);$/;"	v
+globalmem_init	globalmem/globalmem.c	/^static int globalmem_init(void)$/;"	f	file:
+globalmem_init	globalmem_procfs/globalmem.c	/^module_init(globalmem_init);$/;"	v
+globalmem_init	globalmem_procfs/globalmem.c	/^static int globalmem_init(void)$/;"	f	file:
+globalmem_ioctl	globalfifo/globalmem.c	/^long globalmem_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)$/;"	f
+globalmem_ioctl	globalmem/globalmem.c	/^long globalmem_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)$/;"	f
+globalmem_llseek	globalfifo/globalmem.c	/^static loff_t globalmem_llseek(struct file *filp, loff_t offset, int orig)$/;"	f	file:
+globalmem_llseek	globalmem/globalmem.c	/^static loff_t globalmem_llseek(struct file *filp, loff_t offset, int orig)$/;"	f	file:
+globalmem_major	globalfifo/globalmem.c	/^static int globalmem_major = GLOBALMEM_MAJOR;$/;"	v	file:
+globalmem_major	globalmem/globalmem.c	/^static int globalmem_major = GLOBALMEM_MAJOR;$/;"	v	file:
+globalmem_major	globalmem_procfs/globalmem.c	/^static int globalmem_major = 0;$/;"	v	file:
+globalmem_open	globalfifo/globalmem.c	/^int globalmem_open(struct inode *inode, struct file *filp)$/;"	f
+globalmem_open	globalmem/globalmem.c	/^int globalmem_open(struct inode *inode, struct file *filp)$/;"	f
+globalmem_open	globalmem_procfs/globalmem.c	/^int globalmem_open(struct inode *inode, struct file *filp)$/;"	f
+globalmem_read	globalfifo/globalmem.c	/^static ssize_t globalmem_read(struct file *filp, char __user *buf, size_t size, loff_t *ppos)$/;"	f	file:
+globalmem_read	globalmem/globalmem.c	/^static ssize_t globalmem_read(struct file *filp, char __user *buf, size_t size, loff_t *ppos)$/;"	f	file:
+globalmem_read	globalmem_procfs/globalmem.c	/^static ssize_t globalmem_read(struct file *filp, char __user *buf, size_t size, loff_t *ppos)$/;"	f	file:
+globalmem_release	globalfifo/globalmem.c	/^int globalmem_release(struct inode *inode, struct file *filp)$/;"	f
+globalmem_release	globalmem/globalmem.c	/^int globalmem_release(struct inode *inode, struct file *filp)$/;"	f
+globalmem_release	globalmem_procfs/globalmem.c	/^int globalmem_release(struct inode *inode, struct file *filp)$/;"	f
+globalmem_setup_cdev	globalfifo/globalmem.c	/^static void globalmem_setup_cdev(struct globalmem_dev *dev, int index)$/;"	f	file:
+globalmem_setup_cdev	globalmem/globalmem.c	/^static void globalmem_setup_cdev(struct globalmem_dev *dev, int index)$/;"	f	file:
+globalmem_setup_cdev	globalmem_procfs/globalmem.c	/^static void globalmem_setup_cdev(struct globalmem_dev *dev, int index)$/;"	f	file:
+globalmem_write	globalfifo/globalmem.c	/^static ssize_t globalmem_write(struct file *filp, const char __user *buf, size_t size, loff_t *ppos)$/;"	f	file:
+globalmem_write	globalmem/globalmem.c	/^static ssize_t globalmem_write(struct file *filp, const char __user *buf, size_t size, loff_t *ppos)$/;"	f	file:
+globalmem_write	globalmem_procfs/globalmem.c	/^static ssize_t globalmem_write(struct file *filp, const char __user *buf, size_t size, loff_t *ppos)$/;"	f	file:
+hello_exit	hello_kernel/hello.c	/^module_exit(hello_exit);$/;"	v
+hello_exit	hello_kernel/hello.c	/^static void hello_exit(void)$/;"	f	file:
+hello_init	hello_kernel/hello.c	/^module_init(hello_init);$/;"	v
+hello_init	hello_kernel/hello.c	/^static int hello_init(void)$/;"	f	file:
+hz_exit	proc_hz/proc_hz.c	/^module_exit(hz_exit);$/;"	v
+hz_exit	proc_hz/proc_hz.c	/^static void __exit hz_exit(void)$/;"	f	file:
+hz_fops	proc_hz/proc_hz.c	/^static const struct file_operations hz_fops = {$/;"	v	typeref:struct:file_operations	file:
+hz_init	proc_hz/proc_hz.c	/^module_init(hz_init);$/;"	v
+hz_init	proc_hz/proc_hz.c	/^static int __init hz_init(void)$/;"	f	file:
+hz_open	proc_hz/proc_hz.c	/^static int hz_open(struct inode *inode, struct file *file)$/;"	f	file:
+hz_show	proc_hz/proc_hz.c	/^static int hz_show(struct seq_file *m, void *v)$/;"	f	file:
+inq	scull_pipe/pipe.c	/^    wait_queue_head_t inq, outq;        \/* read and write queues *\/$/;"	m	struct:scull_pipe	file:
+inq	scull_poll/pipe.c	/^    wait_queue_head_t inq, outq;        \/* read and write queues *\/$/;"	m	struct:scull_pipe	file:
+irq	paramirq/paramirq.c	/^static int irq;$/;"	v	file:
+limit	proc_evens/evens.c	/^static int limit = 20;$/;"	v	file:
+list	double_list/double_list.c	/^    struct list_head list;  \/\/指向双向链表前后节点的指针$/;"	m	struct:numlist	typeref:struct:numlist::list_head	file:
+main	hello_c/hello.c	/^int main()$/;"	f
+main	hello_c/hello.s	/^main:$/;"	l
+main	scull_ioctl/example/scull_ioctl.c	/^int main(int argc, char *argv[])$/;"	f
+main	scull_pipe/example/scull_ioctl.c	/^int main(int argc, char *argv[])$/;"	f
+main	scull_poll/example/poll_test.c	/^int main(int argc, char *argv[])$/;"	f
+mem	globalfifo/globalmem.h	/^    unsigned char mem[GLOBALMEM_SIZE];  \/\/globalmem memory $/;"	m	struct:globalmem_dev
+mem	globalmem/globalmem.h	/^    unsigned char mem[GLOBALMEM_SIZE];  \/\/globalmem memory $/;"	m	struct:globalmem_dev
+mem	globalmem_procfs/globalmem.h	/^    unsigned char mem[GLOBALMEM_SIZE];  \/\/globalmem memory$/;"	m	struct:globalmem_dev
+mutex	Volumes/android/msm/drivers/example/example.h	/^	struct mutex mutex;$/;"	m	struct:example_dev	typeref:struct:example_dev::mutex
+mutex	scull/scull.h	/^     struct mutex mutex;        \/* mutual exclusion semaphore *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::mutex
+mutex	scull_ioctl/scull.h	/^     struct mutex mutex;        \/* mutual exclusion semaphore *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::mutex
+mutex	scull_pipe/pipe.c	/^    struct mutex mutex;                 \/* mutual exclusion semaphore *\/$/;"	m	struct:scull_pipe	typeref:struct:scull_pipe::mutex	file:
+mutex	scull_pipe/scull.h	/^     struct mutex mutex;        \/* mutual exclusion semaphore *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::mutex
+mutex	scull_poll/pipe.c	/^    struct mutex mutex;                 \/* mutual exclusion semaphore *\/$/;"	m	struct:scull_pipe	typeref:struct:scull_pipe::mutex	file:
+mutex	scull_poll/scull.h	/^     struct mutex mutex;        \/* mutual exclusion semaphore *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::mutex
+mutex	scull_proc/scull.h	/^     struct mutex mutex;        \/* mutual exclusion semaphore *\/$/;"	m	struct:scull_dev	typeref:struct:scull_dev::mutex
+mydev	paramirq/paramirq.c	/^struct myirq mydev={1119};$/;"	v	typeref:struct:myirq
+myirq	paramirq/paramirq.c	/^struct myirq$/;"	s	file:
+myirq_exit	paramirq/paramirq.c	/^module_exit(myirq_exit);$/;"	v
+myirq_exit	paramirq/paramirq.c	/^static void __exit myirq_exit()$/;"	f	file:
+myirq_handler	paramirq/paramirq.c	/^static irqreturn_t myirq_handler(int irq,void* dev)$/;"	f	file:
+myirq_init	paramirq/paramirq.c	/^module_init(myirq_init);$/;"	v
+myirq_init	paramirq/paramirq.c	/^static int __init myirq_init()$/;"	f	file:
+mytasklet	paramirq/paramirq.c	/^static struct tasklet_struct mytasklet;$/;"	v	typeref:struct:tasklet_struct	file:
+mytasklet_handler	paramirq/paramirq.c	/^static void mytasklet_handler(unsigned long data)$/;"	f	file:
+name	CMOS/main.c	/^    char name[10];                      \/* Mutexes, spinlocks, wait queues, ..*\/$/;"	m	struct:cmos_dev	file:
+next	scull/scull.h	/^     struct scull_qset *next;$/;"	m	struct:scull_qset	typeref:struct:scull_qset::scull_qset
+next	scull_ioctl/scull.h	/^     struct scull_qset *next;$/;"	m	struct:scull_qset	typeref:struct:scull_qset::scull_qset
+next	scull_pipe/scull.h	/^     struct scull_qset *next;$/;"	m	struct:scull_qset	typeref:struct:scull_qset::scull_qset
+next	scull_poll/scull.h	/^     struct scull_qset *next;$/;"	m	struct:scull_qset	typeref:struct:scull_qset::scull_qset
+next	scull_proc/scull.h	/^     struct scull_qset *next;$/;"	m	struct:scull_qset	typeref:struct:scull_qset::scull_qset
+nreaders	scull_pipe/pipe.c	/^    int nreaders, nwriters;              \/* number of openings for r\/w *\/$/;"	m	struct:scull_pipe	file:
+nreaders	scull_poll/pipe.c	/^    int nreaders, nwriters;              \/* number of openings for r\/w *\/$/;"	m	struct:scull_pipe	file:
+num	double_list/double_list.c	/^    int num;    \/\/数据$/;"	m	struct:numlist	file:
+numhead	double_list/double_list.c	/^struct numlist numhead;     \/\/头节点$/;"	v	typeref:struct:numlist
+numlist	double_list/double_list.c	/^struct numlist{$/;"	s	file:
+nwriters	scull_pipe/pipe.c	/^    int nreaders, nwriters;              \/* number of openings for r\/w *\/$/;"	m	struct:scull_pipe	file:
+nwriters	scull_poll/pipe.c	/^    int nreaders, nwriters;              \/* number of openings for r\/w *\/$/;"	m	struct:scull_pipe	file:
+obj-m	paramirq/Makefile	/^obj-m:=paramirq.o$/;"	m
+obj-m	scull_ioctl/Makefile	/^obj-m	:= scull.o$/;"	m
+obj-m	scull_pipe/Makefile	/^obj-m	:= scull.o$/;"	m
+obj-m	scull_poll/Makefile	/^obj-m	:= scull.o$/;"	m
+obj-m	scull_proc/Makefile	/^obj-m	:= scull.o$/;"	m
+outq	scull_pipe/pipe.c	/^    wait_queue_head_t inq, outq;        \/* read and write queues *\/$/;"	m	struct:scull_pipe	file:
+outq	scull_poll/pipe.c	/^    wait_queue_head_t inq, outq;        \/* read and write queues *\/$/;"	m	struct:scull_pipe	file:
+proc_entry	globalmem_procfs/globalmem.c	/^static struct proc_dir_entry *proc_entry;$/;"	v	typeref:struct:proc_dir_entry	file:
+qset	scull/scull.h	/^     int qset;                  \/* the current array size *\/$/;"	m	struct:scull_dev
+qset	scull_ioctl/scull.h	/^     int qset;                  \/* the current array size *\/$/;"	m	struct:scull_dev
+qset	scull_pipe/scull.h	/^     int qset;                  \/* the current array size *\/$/;"	m	struct:scull_dev
+qset	scull_poll/scull.h	/^     int qset;                  \/* the current array size *\/$/;"	m	struct:scull_dev
+qset	scull_proc/scull.h	/^     int qset;                  \/* the current array size *\/$/;"	m	struct:scull_dev
+quantum	scull/scull.h	/^     int quantum;               \/* the current quantum size *\/$/;"	m	struct:scull_dev
+quantum	scull_ioctl/scull.h	/^     int quantum;               \/* the current quantum size *\/$/;"	m	struct:scull_dev
+quantum	scull_pipe/scull.h	/^     int quantum;               \/* the current quantum size *\/$/;"	m	struct:scull_dev
+quantum	scull_poll/scull.h	/^     int quantum;               \/* the current quantum size *\/$/;"	m	struct:scull_dev
+quantum	scull_proc/scull.h	/^     int quantum;               \/* the current quantum size *\/$/;"	m	struct:scull_dev
+rp	scull_pipe/pipe.c	/^    char *rp, *wp;                      \/* where to read, where to write *\/$/;"	m	struct:scull_pipe	file:
+rp	scull_poll/pipe.c	/^    char *rp, *wp;                      \/* where to read, where to write *\/$/;"	m	struct:scull_pipe	file:
+scull-objs	scull_pipe/Makefile	/^scull-objs := main.o pipe.o $/;"	m
+scull-objs	scull_poll/Makefile	/^scull-objs := main.o pipe.o $/;"	m
+scull_cleanup_module	scull/scull.c	/^module_exit(scull_cleanup_module);$/;"	v
+scull_cleanup_module	scull/scull.c	/^void scull_cleanup_module(void)$/;"	f
+scull_cleanup_module	scull_ioctl/scull.c	/^module_exit(scull_cleanup_module);$/;"	v
+scull_cleanup_module	scull_ioctl/scull.c	/^void scull_cleanup_module(void)$/;"	f
+scull_cleanup_module	scull_pipe/main.c	/^module_exit(scull_cleanup_module);$/;"	v
+scull_cleanup_module	scull_pipe/main.c	/^void scull_cleanup_module(void)$/;"	f
+scull_cleanup_module	scull_poll/main.c	/^module_exit(scull_cleanup_module);$/;"	v
+scull_cleanup_module	scull_poll/main.c	/^void scull_cleanup_module(void)$/;"	f
+scull_cleanup_module	scull_proc/scull.c	/^module_exit(scull_cleanup_module);$/;"	v
+scull_cleanup_module	scull_proc/scull.c	/^void scull_cleanup_module(void)$/;"	f
+scull_create_proc	scull_ioctl/scull.c	/^static void scull_create_proc(void)$/;"	f	file:
+scull_create_proc	scull_pipe/main.c	/^static void scull_create_proc(void)$/;"	f	file:
+scull_create_proc	scull_poll/main.c	/^static void scull_create_proc(void)$/;"	f	file:
+scull_create_proc	scull_proc/scull.c	/^static void scull_create_proc(void)$/;"	f	file:
+scull_dev	scull/scull.h	/^ struct scull_dev {$/;"	s
+scull_dev	scull_ioctl/scull.h	/^ struct scull_dev {$/;"	s
+scull_dev	scull_pipe/scull.h	/^ struct scull_dev {$/;"	s
+scull_dev	scull_poll/scull.h	/^ struct scull_dev {$/;"	s
+scull_dev	scull_proc/scull.h	/^ struct scull_dev {$/;"	s
+scull_devices	scull/scull.c	/^struct scull_dev *scull_devices;    \/* allocated in scull_init_module *\/$/;"	v	typeref:struct:scull_dev
+scull_devices	scull_ioctl/scull.c	/^struct scull_dev *scull_devices;    \/* allocated in scull_init_module *\/$/;"	v	typeref:struct:scull_dev
+scull_devices	scull_pipe/main.c	/^struct scull_dev *scull_devices;    \/* allocated in scull_init_module *\/$/;"	v	typeref:struct:scull_dev
+scull_devices	scull_poll/main.c	/^struct scull_dev *scull_devices;    \/* allocated in scull_init_module *\/$/;"	v	typeref:struct:scull_dev
+scull_devices	scull_proc/scull.c	/^struct scull_dev *scull_devices;    \/* allocated in scull_init_module *\/$/;"	v	typeref:struct:scull_dev
+scull_follow	scull/scull.c	/^struct scull_qset *scull_follow(struct scull_dev *dev, int n)$/;"	f
+scull_follow	scull_ioctl/scull.c	/^struct scull_qset *scull_follow(struct scull_dev *dev, int n)$/;"	f
+scull_follow	scull_pipe/main.c	/^struct scull_qset *scull_follow(struct scull_dev *dev, int n)$/;"	f
+scull_follow	scull_poll/main.c	/^struct scull_qset *scull_follow(struct scull_dev *dev, int n)$/;"	f
+scull_follow	scull_proc/scull.c	/^struct scull_qset *scull_follow(struct scull_dev *dev, int n)$/;"	f
+scull_fops	scull/scull.c	/^struct file_operations scull_fops = {$/;"	v	typeref:struct:file_operations
+scull_fops	scull_ioctl/scull.c	/^struct file_operations scull_fops = {$/;"	v	typeref:struct:file_operations
+scull_fops	scull_pipe/main.c	/^struct file_operations scull_fops = {$/;"	v	typeref:struct:file_operations
+scull_fops	scull_poll/main.c	/^struct file_operations scull_fops = {$/;"	v	typeref:struct:file_operations
+scull_fops	scull_proc/scull.c	/^struct file_operations scull_fops = {$/;"	v	typeref:struct:file_operations
+scull_getwritespace	scull_pipe/pipe.c	/^static int scull_getwritespace(struct scull_pipe *dev, struct file *filp)$/;"	f	file:
+scull_getwritespace	scull_poll/pipe.c	/^static int scull_getwritespace(struct scull_pipe *dev, struct file *filp)$/;"	f	file:
+scull_init	scull/scull.c	/^module_init(scull_init);$/;"	v
+scull_init	scull/scull.c	/^static int scull_init(void)$/;"	f	file:
+scull_init	scull_ioctl/scull.c	/^module_init(scull_init);$/;"	v
+scull_init	scull_ioctl/scull.c	/^static int scull_init(void)$/;"	f	file:
+scull_init	scull_pipe/main.c	/^module_init(scull_init);$/;"	v
+scull_init	scull_pipe/main.c	/^static int scull_init(void)$/;"	f	file:
+scull_init	scull_poll/main.c	/^module_init(scull_init);$/;"	v
+scull_init	scull_poll/main.c	/^static int scull_init(void)$/;"	f	file:
+scull_init	scull_proc/scull.c	/^module_init(scull_init);$/;"	v
+scull_init	scull_proc/scull.c	/^static int scull_init(void)$/;"	f	file:
+scull_ioctl	scull_ioctl/scull.c	/^long scull_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)$/;"	f
+scull_ioctl	scull_pipe/main.c	/^long scull_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)$/;"	f
+scull_ioctl	scull_poll/main.c	/^long scull_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)$/;"	f
+scull_major	scull/scull.c	/^int scull_major = SCULL_MAJOR;$/;"	v
+scull_major	scull_ioctl/scull.c	/^int scull_major = SCULL_MAJOR;$/;"	v
+scull_major	scull_pipe/main.c	/^int scull_major = SCULL_MAJOR;$/;"	v
+scull_major	scull_poll/main.c	/^int scull_major = SCULL_MAJOR;$/;"	v
+scull_major	scull_proc/scull.c	/^int scull_major = SCULL_MAJOR;$/;"	v
+scull_minor	scull/scull.c	/^int scull_minor=0;$/;"	v
+scull_minor	scull_ioctl/scull.c	/^int scull_minor=0;$/;"	v
+scull_minor	scull_pipe/main.c	/^int scull_minor=0;$/;"	v
+scull_minor	scull_poll/main.c	/^int scull_minor=0;$/;"	v
+scull_minor	scull_proc/scull.c	/^int scull_minor=0;$/;"	v
+scull_nr_devs	scull/scull.c	/^int scull_nr_devs = SCULL_NR_DEVS; \/\/ number of bare scull devices$/;"	v
+scull_nr_devs	scull_ioctl/scull.c	/^int scull_nr_devs = SCULL_NR_DEVS; \/\/ number of bare scull devices$/;"	v
+scull_nr_devs	scull_pipe/main.c	/^int scull_nr_devs = SCULL_NR_DEVS; \/\/ number of bare scull devices$/;"	v
+scull_nr_devs	scull_poll/main.c	/^int scull_nr_devs = SCULL_NR_DEVS; \/\/ number of bare scull devices$/;"	v
+scull_nr_devs	scull_proc/scull.c	/^int scull_nr_devs = SCULL_NR_DEVS; \/\/ number of bare scull devices$/;"	v
+scull_open	scull/scull.c	/^int scull_open(struct inode *inode, struct file *filp)$/;"	f
+scull_open	scull_ioctl/scull.c	/^int scull_open(struct inode *inode, struct file *filp)$/;"	f
+scull_open	scull_pipe/main.c	/^int scull_open(struct inode *inode, struct file *filp)$/;"	f
+scull_open	scull_poll/main.c	/^int scull_open(struct inode *inode, struct file *filp)$/;"	f
+scull_open	scull_proc/scull.c	/^int scull_open(struct inode *inode, struct file *filp)$/;"	f
+scull_p_buffer	scull_pipe/pipe.c	/^int scull_p_buffer = SCULL_P_BUFFER;    \/* buffer size *\/$/;"	v
+scull_p_buffer	scull_poll/pipe.c	/^int scull_p_buffer = SCULL_P_BUFFER;    \/* buffer size *\/$/;"	v
+scull_p_cleanup	scull_pipe/pipe.c	/^void scull_p_cleanup(void)$/;"	f
+scull_p_cleanup	scull_poll/pipe.c	/^void scull_p_cleanup(void)$/;"	f
+scull_p_devices	scull_pipe/pipe.c	/^static struct scull_pipe *scull_p_devices;$/;"	v	typeref:struct:scull_pipe	file:
+scull_p_devices	scull_poll/pipe.c	/^static struct scull_pipe *scull_p_devices;$/;"	v	typeref:struct:scull_pipe	file:
+scull_p_devno	scull_pipe/pipe.c	/^dev_t scull_p_devno;    \/* Our first device number *\/$/;"	v
+scull_p_devno	scull_poll/pipe.c	/^dev_t scull_p_devno;    \/* Our first device number *\/$/;"	v
+scull_p_init	scull_pipe/pipe.c	/^int scull_p_init(dev_t firstdev)$/;"	f
+scull_p_init	scull_poll/pipe.c	/^int scull_p_init(dev_t firstdev)$/;"	f
+scull_p_nr_devs	scull_pipe/pipe.c	/^static int scull_p_nr_devs = SCULL_P_NR_DEVS;   \/* number of pipe devices *\/$/;"	v	file:
+scull_p_nr_devs	scull_poll/pipe.c	/^static int scull_p_nr_devs = SCULL_P_NR_DEVS;   \/* number of pipe devices *\/$/;"	v	file:
+scull_p_open	scull_pipe/pipe.c	/^static int scull_p_open(struct inode *inode, struct file *filp)$/;"	f	file:
+scull_p_open	scull_poll/pipe.c	/^static int scull_p_open(struct inode *inode, struct file *filp)$/;"	f	file:
+scull_p_poll	scull_poll/pipe.c	/^static unsigned int scull_p_poll(struct file *filp, poll_table *wait)$/;"	f	file:
+scull_p_read	scull_pipe/pipe.c	/^static ssize_t scull_p_read(struct file *filp, char __user *buf, size_t count, loff_t *f_ops)$/;"	f	file:
+scull_p_read	scull_poll/pipe.c	/^static ssize_t scull_p_read(struct file *filp, char __user *buf, size_t count, loff_t *f_ops)$/;"	f	file:
+scull_p_release	scull_pipe/pipe.c	/^static int scull_p_release(struct inode *inode, struct file *filp)$/;"	f	file:
+scull_p_release	scull_poll/pipe.c	/^static int scull_p_release(struct inode *inode, struct file *filp)$/;"	f	file:
+scull_p_setup_cdev	scull_pipe/pipe.c	/^static void scull_p_setup_cdev(struct scull_pipe *dev, int index)$/;"	f	file:
+scull_p_setup_cdev	scull_poll/pipe.c	/^static void scull_p_setup_cdev(struct scull_pipe *dev, int index)$/;"	f	file:
+scull_p_write	scull_pipe/pipe.c	/^static ssize_t scull_p_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_ops)$/;"	f	file:
+scull_p_write	scull_poll/pipe.c	/^static ssize_t scull_p_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_ops)$/;"	f	file:
+scull_pipe	scull_pipe/pipe.c	/^struct scull_pipe {$/;"	s	file:
+scull_pipe	scull_poll/pipe.c	/^struct scull_pipe {$/;"	s	file:
+scull_pipe_fops	scull_pipe/pipe.c	/^struct file_operations scull_pipe_fops = {$/;"	v	typeref:struct:file_operations
+scull_pipe_fops	scull_poll/pipe.c	/^struct file_operations scull_pipe_fops = {$/;"	v	typeref:struct:file_operations
+scull_proc_open	scull_ioctl/scull.c	/^static int scull_proc_open(struct inode *inode, struct file *file)$/;"	f	file:
+scull_proc_open	scull_pipe/main.c	/^static int scull_proc_open(struct inode *inode, struct file *file)$/;"	f	file:
+scull_proc_open	scull_poll/main.c	/^static int scull_proc_open(struct inode *inode, struct file *file)$/;"	f	file:
+scull_proc_open	scull_proc/scull.c	/^static int scull_proc_open(struct inode *inode, struct file *file)$/;"	f	file:
+scull_proc_ops	scull_ioctl/scull.c	/^static struct file_operations scull_proc_ops = {$/;"	v	typeref:struct:file_operations	file:
+scull_proc_ops	scull_pipe/main.c	/^static struct file_operations scull_proc_ops = {$/;"	v	typeref:struct:file_operations	file:
+scull_proc_ops	scull_poll/main.c	/^static struct file_operations scull_proc_ops = {$/;"	v	typeref:struct:file_operations	file:
+scull_proc_ops	scull_proc/scull.c	/^static struct file_operations scull_proc_ops = {$/;"	v	typeref:struct:file_operations	file:
+scull_qset	scull/scull.c	/^int scull_qset = SCULL_QSET;$/;"	v
+scull_qset	scull/scull.h	/^ struct scull_qset {$/;"	s
+scull_qset	scull_ioctl/scull.c	/^int scull_qset = SCULL_QSET;$/;"	v
+scull_qset	scull_ioctl/scull.h	/^ struct scull_qset {$/;"	s
+scull_qset	scull_pipe/main.c	/^int scull_qset = SCULL_QSET;$/;"	v
+scull_qset	scull_pipe/scull.h	/^ struct scull_qset {$/;"	s
+scull_qset	scull_poll/main.c	/^int scull_qset = SCULL_QSET;$/;"	v
+scull_qset	scull_poll/scull.h	/^ struct scull_qset {$/;"	s
+scull_qset	scull_proc/scull.c	/^int scull_qset = SCULL_QSET;$/;"	v
+scull_qset	scull_proc/scull.h	/^ struct scull_qset {$/;"	s
+scull_quantum	scull/scull.c	/^int scull_quantum = SCULL_QUANTUM;$/;"	v
+scull_quantum	scull_ioctl/scull.c	/^int scull_quantum = SCULL_QUANTUM;$/;"	v
+scull_quantum	scull_pipe/main.c	/^int scull_quantum = SCULL_QUANTUM;$/;"	v
+scull_quantum	scull_poll/main.c	/^int scull_quantum = SCULL_QUANTUM;$/;"	v
+scull_quantum	scull_proc/scull.c	/^int scull_quantum = SCULL_QUANTUM;$/;"	v
+scull_read	scull/scull.c	/^ssize_t scull_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)$/;"	f
+scull_read	scull_ioctl/scull.c	/^ssize_t scull_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)$/;"	f
+scull_read	scull_pipe/main.c	/^ssize_t scull_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)$/;"	f
+scull_read	scull_poll/main.c	/^ssize_t scull_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)$/;"	f
+scull_read	scull_proc/scull.c	/^ssize_t scull_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)$/;"	f
+scull_release	scull/scull.c	/^int scull_release(struct inode *inode, struct file *filp)$/;"	f
+scull_release	scull_ioctl/scull.c	/^int scull_release(struct inode *inode, struct file *filp)$/;"	f
+scull_release	scull_pipe/main.c	/^int scull_release(struct inode *inode, struct file *filp)$/;"	f
+scull_release	scull_poll/main.c	/^int scull_release(struct inode *inode, struct file *filp)$/;"	f
+scull_release	scull_proc/scull.c	/^int scull_release(struct inode *inode, struct file *filp)$/;"	f
+scull_remove_proc	scull_ioctl/scull.c	/^static void scull_remove_proc(void)$/;"	f	file:
+scull_remove_proc	scull_pipe/main.c	/^static void scull_remove_proc(void)$/;"	f	file:
+scull_remove_proc	scull_poll/main.c	/^static void scull_remove_proc(void)$/;"	f	file:
+scull_remove_proc	scull_proc/scull.c	/^static void scull_remove_proc(void)$/;"	f	file:
+scull_seq_next	scull_ioctl/scull.c	/^static void *scull_seq_next(struct seq_file *s, void *v, loff_t *pos)$/;"	f	file:
+scull_seq_next	scull_pipe/main.c	/^static void *scull_seq_next(struct seq_file *s, void *v, loff_t *pos)$/;"	f	file:
+scull_seq_next	scull_poll/main.c	/^static void *scull_seq_next(struct seq_file *s, void *v, loff_t *pos)$/;"	f	file:
+scull_seq_next	scull_proc/scull.c	/^static void *scull_seq_next(struct seq_file *s, void *v, loff_t *pos)$/;"	f	file:
+scull_seq_ops	scull_ioctl/scull.c	/^ static struct seq_operations scull_seq_ops = {$/;"	v	typeref:struct:seq_operations	file:
+scull_seq_ops	scull_pipe/main.c	/^ static struct seq_operations scull_seq_ops = {$/;"	v	typeref:struct:seq_operations	file:
+scull_seq_ops	scull_poll/main.c	/^ static struct seq_operations scull_seq_ops = {$/;"	v	typeref:struct:seq_operations	file:
+scull_seq_ops	scull_proc/scull.c	/^ static struct seq_operations scull_seq_ops = {$/;"	v	typeref:struct:seq_operations	file:
+scull_seq_show	scull_ioctl/scull.c	/^static int scull_seq_show(struct seq_file *s, void *v)$/;"	f	file:
+scull_seq_show	scull_pipe/main.c	/^static int scull_seq_show(struct seq_file *s, void *v)$/;"	f	file:
+scull_seq_show	scull_poll/main.c	/^static int scull_seq_show(struct seq_file *s, void *v)$/;"	f	file:
+scull_seq_show	scull_proc/scull.c	/^static int scull_seq_show(struct seq_file *s, void *v)$/;"	f	file:
+scull_seq_start	scull_ioctl/scull.c	/^static void *scull_seq_start(struct seq_file *s, loff_t *pos)$/;"	f	file:
+scull_seq_start	scull_pipe/main.c	/^static void *scull_seq_start(struct seq_file *s, loff_t *pos)$/;"	f	file:
+scull_seq_start	scull_poll/main.c	/^static void *scull_seq_start(struct seq_file *s, loff_t *pos)$/;"	f	file:
+scull_seq_start	scull_proc/scull.c	/^static void *scull_seq_start(struct seq_file *s, loff_t *pos)$/;"	f	file:
+scull_seq_stop	scull_ioctl/scull.c	/^static void scull_seq_stop(struct seq_file *s, void *v)$/;"	f	file:
+scull_seq_stop	scull_pipe/main.c	/^static void scull_seq_stop(struct seq_file *s, void *v)$/;"	f	file:
+scull_seq_stop	scull_poll/main.c	/^static void scull_seq_stop(struct seq_file *s, void *v)$/;"	f	file:
+scull_seq_stop	scull_proc/scull.c	/^static void scull_seq_stop(struct seq_file *s, void *v)$/;"	f	file:
+scull_setup_cdev	scull/scull.c	/^static void scull_setup_cdev(struct scull_dev *dev, int index)$/;"	f	file:
+scull_setup_cdev	scull_ioctl/scull.c	/^static void scull_setup_cdev(struct scull_dev *dev, int index)$/;"	f	file:
+scull_setup_cdev	scull_pipe/main.c	/^static void scull_setup_cdev(struct scull_dev *dev, int index)$/;"	f	file:
+scull_setup_cdev	scull_poll/main.c	/^static void scull_setup_cdev(struct scull_dev *dev, int index)$/;"	f	file:
+scull_setup_cdev	scull_proc/scull.c	/^static void scull_setup_cdev(struct scull_dev *dev, int index)$/;"	f	file:
+scull_trim	scull/scull.c	/^int scull_trim(struct scull_dev *dev)$/;"	f
+scull_trim	scull_ioctl/scull.c	/^int scull_trim(struct scull_dev *dev)$/;"	f
+scull_trim	scull_pipe/main.c	/^int scull_trim(struct scull_dev *dev)$/;"	f
+scull_trim	scull_poll/main.c	/^int scull_trim(struct scull_dev *dev)$/;"	f
+scull_trim	scull_proc/scull.c	/^int scull_trim(struct scull_dev *dev)$/;"	f
+scull_write	scull/scull.c	/^ssize_t scull_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_pos)$/;"	f
+scull_write	scull_ioctl/scull.c	/^ssize_t scull_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_pos)$/;"	f
+scull_write	scull_pipe/main.c	/^ssize_t scull_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_pos)$/;"	f
+scull_write	scull_poll/main.c	/^ssize_t scull_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_pos)$/;"	f
+scull_write	scull_proc/scull.c	/^ssize_t scull_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_pos)$/;"	f
+sem	globalfifo/globalmem.h	/^    struct semaphore sem;   \/\/并发控制用的信号量$/;"	m	struct:globalmem_dev	typeref:struct:globalmem_dev::semaphore
+sem	globalmem/globalmem.h	/^    struct semaphore sem;   \/\/并发控制用的信号量$/;"	m	struct:globalmem_dev	typeref:struct:globalmem_dev::semaphore
+size	CMOS/main.c	/^    unsigned int size;                  \/* Size of the bank *\/$/;"	m	struct:cmos_dev	file:
+size	scull/scull.h	/^     unsigned long size;        \/* amount of data stored here *\/$/;"	m	struct:scull_dev
+size	scull_ioctl/scull.h	/^     unsigned long size;        \/* amount of data stored here *\/$/;"	m	struct:scull_dev
+size	scull_pipe/scull.h	/^     unsigned long size;        \/* amount of data stored here *\/$/;"	m	struct:scull_dev
+size	scull_poll/scull.h	/^     unsigned long size;        \/* amount of data stored here *\/$/;"	m	struct:scull_dev
+size	scull_proc/scull.h	/^     unsigned long size;        \/* amount of data stored here *\/$/;"	m	struct:scull_dev
+spacefree	scull_pipe/pipe.c	/^static int spacefree(struct scull_pipe *dev)$/;"	f	file:
+spacefree	scull_poll/pipe.c	/^static int spacefree(struct scull_pipe *dev)$/;"	f	file:
+val	Volumes/android/msm/drivers/example/example.h	/^	int val;$/;"	m	struct:example_dev
+wp	scull_pipe/pipe.c	/^    char *rp, *wp;                      \/* where to read, where to write *\/$/;"	m	struct:scull_pipe	file:
+wp	scull_poll/pipe.c	/^    char *rp, *wp;                      \/* where to read, where to write *\/$/;"	m	struct:scull_pipe	file:

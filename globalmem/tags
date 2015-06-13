@@ -1,0 +1,32 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CURRENT_PATH	Makefile	/^CURRENT_PATH:=$(shell pwd)$/;"	m
+GLOBALMEM_MAJOR	globalmem.h	14;"	d
+GLOBALMEM_SIZE	globalmem.h	12;"	d
+LINUX_KERNEL	Makefile	/^LINUX_KERNEL:=$(shell uname -r)$/;"	m
+LINUX_KERNEL_PATH	Makefile	/^LINUX_KERNEL_PATH:=\/usr\/src\/linux-headers-$(LINUX_KERNEL)$/;"	m
+MEM_CLEAR	globalmem.h	13;"	d
+_CHARMODULE_H	globalmem.h	9;"	d
+cdev	globalmem.h	/^    struct cdev cdev;   \/\/cdev struct which the kernel has define$/;"	m	struct:globalmem_dev	typeref:struct:globalmem_dev::cdev
+devno	globalmem.c	/^dev_t devno;$/;"	v
+globalmem_dev	globalmem.h	/^struct globalmem_dev{$/;"	s
+globalmem_devp	globalmem.c	/^struct globalmem_dev *globalmem_devp;$/;"	v	typeref:struct:globalmem_dev
+globalmem_exit	globalmem.c	/^module_exit(globalmem_exit);$/;"	v
+globalmem_exit	globalmem.c	/^static void globalmem_exit(void)$/;"	f	file:
+globalmem_fops	globalmem.c	/^static const struct file_operations globalmem_fops = $/;"	v	typeref:struct:file_operations	file:
+globalmem_init	globalmem.c	/^module_init(globalmem_init);$/;"	v
+globalmem_init	globalmem.c	/^static int globalmem_init(void)$/;"	f	file:
+globalmem_ioctl	globalmem.c	/^long globalmem_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)$/;"	f
+globalmem_llseek	globalmem.c	/^static loff_t globalmem_llseek(struct file *filp, loff_t offset, int orig)$/;"	f	file:
+globalmem_major	globalmem.c	/^static int globalmem_major = GLOBALMEM_MAJOR;$/;"	v	file:
+globalmem_open	globalmem.c	/^int globalmem_open(struct inode *inode, struct file *filp)$/;"	f
+globalmem_read	globalmem.c	/^static ssize_t globalmem_read(struct file *filp, char __user *buf, size_t size, loff_t *ppos)$/;"	f	file:
+globalmem_release	globalmem.c	/^int globalmem_release(struct inode *inode, struct file *filp)$/;"	f
+globalmem_setup_cdev	globalmem.c	/^static void globalmem_setup_cdev(struct globalmem_dev *dev, int index)$/;"	f	file:
+globalmem_write	globalmem.c	/^static ssize_t globalmem_write(struct file *filp, const char __user *buf, size_t size, loff_t *ppos)$/;"	f	file:
+mem	globalmem.h	/^    unsigned char mem[GLOBALMEM_SIZE];  \/\/globalmem memory $/;"	m	struct:globalmem_dev
+sem	globalmem.h	/^    struct semaphore sem;   \/\/并发控制用的信号量$/;"	m	struct:globalmem_dev	typeref:struct:globalmem_dev::semaphore

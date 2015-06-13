@@ -155,3 +155,14 @@ http://www.ibm.com/developerworks/cn/linux/l-proc.html
 
 **需要说明的是**
 在最新的内核里(linux 3.13.0)，这个例子有一点小bug，也就是前面提到很多次的`create_proc_entry()`被`proc_create()`取代
+
+## 附加 ctags+vim 的使用
+没做什么事情，就是生成了ctags标签，便于代码查阅，简单介绍一下安装和使用：  
+- 安装：`sudo apt-get install exuberant-ctags`
+- 生成标签：`ctags -R .`
+> 会在当前目录生成一个tags文件，里面记录着函数和变量等的定义和使用的位置。
+- 当前目录下用vim打开你要查阅的源码文件，可以使用下面的几个命令：
+|Keyboard command	| Action				|
+|-----------------------|---------------------------------------|
+|Ctrl-]			|Jump to the tag underneath the cursor 	|
+
