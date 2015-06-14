@@ -90,6 +90,7 @@ http://stackoverflow.com/questions/1063564/unlocked-ioctl-vs-normal-ioctl
 - 源码目录－－/scull_pipe
 - 源码解读：http://blog.csdn.net/liuhaoyutz/article/details/7395057
  - 文中说源码有bug，但我想应该再仔细考虑。博文中的修改并没有体现出`scull_p_setup_cdev()`里分配的buffer在哪里被清理。而且`scull_p_setup_cdev`是无返回类型的，但里面却有一句`return -ENOMEM;`
+- 附加了一个阻塞IO的例子——globalfifo（这个例子源自《Linux设备驱动开发详解》）
 
 ### poll和select
 - 源码目录－－/scull_poll
