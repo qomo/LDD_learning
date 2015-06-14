@@ -16,6 +16,9 @@
 // globalmem设备结构体
 struct globalmem_dev{
     struct cdev cdev;   //cdev struct which the kernel has define
+    unsigned int current_len;	//fifo有效数据长度
     unsigned char mem[GLOBALMEM_SIZE];  //globalmem memory 
     struct semaphore sem;   //并发控制用的信号量
+    wait_queue_head_t r_wait;	//阻塞读用的等待队列头
+    wait_queue_head_t w_wait;   //阻塞写用的等待队列头
 };

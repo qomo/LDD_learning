@@ -14,8 +14,9 @@
 #include <linux/cdev.h>
 #include <asm/uaccess.h>
 #include <linux/semaphore.h>
+#include <linux/sched.h>
 
-#include "globalmem.h"
+#include "globalfifo.h"
 
 
 MODULE_LICENSE("GPL");
@@ -38,60 +39,102 @@ int globalmem_release(struct inode *inode, struct file *filp)
 
 static ssize_t globalmem_read(struct file *filp, char __user *buf, size_t size, loff_t *ppos)
 {
-    unsigned long p = *ppos;
     unsigned int count = size;
     int ret = 0;
     struct globalmem_dev *dev = filp->private_data;     // 获取设备结构体指针
+    DECLARE_WAITQUEUE(wait, current); 	// 定义等待队列
+
+    down(&dev->sem);	// 获得信号量
+    add_wait_queue(&dev->r_wait, &wait);  // 进入读等待队列
+
+    // 等待FIFO非空
+    while(dev->current_len == 0) {
+        if (filp->f_flags & O_NONBLOCK) {
+	    ret = -EAGAIN;
+  	    goto out;
+        }
+	__set_current_state(TASK_INTERRUPTIBLE); // 改变进程状态为睡眠
+	up(&dev->sem);
+
+ 	schedule(); 	// 调度其他进程执行
+  	if(signal_pending(current)){ 	// 如果是因为信号唤醒
+	    ret = - ERESTARTSYS;
+	    goto out2;
+	}
+
+	down(&dev->sem);
+    }
 
     // 分析和获取有效的写长度
-    if (p >= GLOBALMEM_SIZE)
-        return 0;
-    if (count > GLOBALMEM_SIZE - p)
-        count = GLOBALMEM_SIZE - p;
-
-    if (down_interruptible(&dev->sem))  /*获得信号量*/
-        return -ERESTARTSYS;
+    if (count > dev->current_len)
+        count = dev->current_len;
 
     // 内核空间->用户空间
-    if (copy_to_user(buf, (void*)(dev->mem + p), count))
-    {
+    if (copy_to_user(buf, dev->mem, count)){
         ret = -EFAULT;
+	goto out;
+    } else {
+	memcpy(dev->mem, dev->mem+count, dev->current_len - count);  // fifo数据前移
+	dev->current_len -= count;  // 有效数据长度减少
+        printk(KERN_INFO "read %d bytes(s), current_len:%d\n", count, dev->current_len);
+	
+	wake_up_interruptible(&dev->w_wait); 	// 唤醒写等待队列
+
+	ret = count;
     }
-    else
-    {
-        *ppos += count;
-        ret = count;
-        printk(KERN_INFO "read %d bytes(s) from %d\n", count, p);
-    }
-    up(&dev->sem);  /*释放信号量*/
+    out: up(&dev->sem);  /*释放信号量*/
+    out2: remove_wait_queue(&dev->w_wait, &wait);  // 移除等待队列
     return ret;
 }
 
 static ssize_t globalmem_write(struct file *filp, const char __user *buf, size_t size, loff_t *ppos)
 {
-    unsigned long p = *ppos;
     unsigned int count = size;
     int ret = 0;
     struct globalmem_dev *dev = filp->private_data; 
 
-    if (p >= GLOBALMEM_SIZE)        //要写的偏移量越界
-        return count ? - ENXIO: 0;
-    if (count > GLOBALMEM_SIZE - p)     //要写的字节数太多
-        count = GLOBALMEM_SIZE - p;
+    DECLARE_WAITQUEUE(wait, current);	// 定义等待队列
 
-    if (down_interruptible(&dev->sem))  /*获得信号量*/
-        return -ERESTARTSYS;
+    down(&dev->sem);  // 获取信号量
+    add_wait_queue(&dev->w_wait, &wait);  // 进入写等待队列头
+
+    // 等待FIFO非满
+    while(dev->current_len == GLOBALMEM_SIZE) {
+	if(filp->f_flags & O_NONBLOCK) { // 如果是非阻塞访问
+	    ret = -EAGAIN;
+	    goto out;
+	}
+	__set_current_state(TASK_INTERRUPTIBLE);  // 改变进程状态为睡眠
+	up(&dev->sem);
+
+	schedule();  // 调度其他进程执行
+	
+	if(signal_pending(current)) {  // 如果是因为信号唤醒
+	    ret = -ERESTARTSYS;
+	    goto out2;
+	}
+
+	down(&dev->sem);  // 获得信号量
+    }
+
+    if (count > GLOBALMEM_SIZE - dev->current_len)     //要写的字节数太多
+        count = GLOBALMEM_SIZE - dev->current_len;
 
     // 用户空间->内核空间 
-    if (copy_from_user(dev->mem + p, buf, count))
+    if (copy_from_user(dev->mem + dev->current_len, buf, count)) {
         ret = -EFAULT;
-    else
-    {
-        *ppos += count;
+	goto out;
+    } else {
+	dev->current_len += count;
+        printk(KERN_INFO "writen %d bytes(s), current_len:%d\n", count, dev->current_len);
+
+	wake_up_interruptible(&dev->r_wait);  // 唤醒读等待队列
+
         ret = count;
-        printk(KERN_INFO "writen %d bytes(s) from %d\n", count, p);
     }
-    up(&dev->sem);  /*释放信号量*/
+    out: up(&dev->sem);  /*释放信号量*/
+    out2: remove_wait_queue(&dev->w_wait, &wait);
+    set_current_state(TASK_RUNNING);
     return ret;
 }
 
@@ -194,9 +237,9 @@ static int globalmem_init(void)
     }
     if(result<0)
         return result;
+    // 动态申请设备结构体的内存
     globalmem_devp=kmalloc(sizeof(struct globalmem_dev),GFP_KERNEL);
-    if(!globalmem_devp)
-    {
+    if(!globalmem_devp) { 	// 申请失败
         result=-ENOMEM;
         goto fail_malloc;
     }
@@ -205,6 +248,10 @@ static int globalmem_init(void)
 
     globalmem_setup_cdev(globalmem_devp,0);
     sema_init(&globalmem_devp->sem, 1);   /*初始化信号量*/
+
+    init_waitqueue_head(&globalmem_devp->r_wait); //初始化读等待队列头
+    init_waitqueue_head(&globalmem_devp->w_wait); //初始化写等待队列头
+
     return 0;
 fail_malloc:unregister_chrdev_region(devno,1);
     return result;
