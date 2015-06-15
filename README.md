@@ -12,7 +12,7 @@ http://blog.csdn.net/liuhaoyutz
 * 源码 
 https://github.com/duxing2007/ldd3-examples-3.x
 * 《精通LINUX设备驱动开发》—— 这本书也很不错，适合入门，部分例子来源这本书
-
+* 《Linux设备驱动开发详解》—— 这本书相比于《LDD3》，似乎跟新一点，内容也清晰，结构合理，例子也更详细完整，适合入门。本项目里关于globalxxx的源码来自这本书。
 ## 第一章 设备驱动程序简介
 * Linux Kernel 编译
 http://edsionte.com/techblog/archives/3289
@@ -157,6 +157,16 @@ http://www.ibm.com/developerworks/cn/linux/l-proc.html
 
 **需要说明的是**
 在最新的内核里(linux 3.13.0)，这个例子有一点小bug，也就是前面提到很多次的`create_proc_entry()`被`proc_create()`取代
+
+## 附加 —— platform设备驱动
+这个例子源自《Linux设备驱动开发详解》第12章  
+书中源码基于LDD6410平台，需通过在板文件里添加`platform_device`的方式注册platform设备  
+其实，这个例子是个虚拟硬件的字符设备驱动（也就是前面的globalfifo），可以在普通的x86平台下加载。  
+不同的是，在x86平台下没有找到板文件  
+这就需要在驱动源码里手动注册和注销platform设备，通过下面两个函数实现：  
+`int platform_device_register(struct platform_device *pdev)`  
+`int platform_device_unregister(struct platform_device *pdev)`  
+可以参考[这篇混乱的博文](http://blog.csdn.net/ufo714/article/details/8595021)
 
 ## 附加 ctags+vim 的使用
 没做什么事情，就是生成了ctags标签，便于代码查阅，简单介绍一下安装和使用：  
