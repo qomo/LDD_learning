@@ -10,7 +10,7 @@
 #endif
 
 #define GLOBALFIFO_SIZE 0x1000   // 全局内存最大4K字节
-#define MEM_CLEAR 0x1           // 清零全局内存
+#define FIFO_CLEAR 0x1           // 清零全局内存
 #define GLOBALFIFO_MAJOR 250     // 预设的globalfifo的主设备号
 
 // globalfifo设备结构体

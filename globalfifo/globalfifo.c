@@ -15,6 +15,7 @@
 #include <asm/uaccess.h>
 #include <linux/semaphore.h>
 #include <linux/sched.h>
+#include <linux/poll.h>
 
 #include "globalfifo.h"
 
@@ -178,7 +179,7 @@ long globalfifo_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
     struct globalfifo_dev *dev = filp->private_data;
     switch(cmd) {
-        case MEM_CLEAR:
+    case FIFO_CLEAR:
         if (down_interruptible(&dev->sem))  /*获得信号量*/
             return -ERESTARTSYS;
 
@@ -189,10 +190,29 @@ long globalfifo_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
         printk(KERN_INFO "globalfifo is set to zero\n");
         break;
 
-        default:
+    default:
         return -EINVAL; /*其他不支持的命令*/
     }
     return 0;
+}
+
+static unsigned int globalfifo_poll(struct file *filp, poll_table *wait)
+{
+    unsigned int mask = 0;
+    struct globalfifo_dev *dev = filp->private_data;    // 获取设备结构体指针
+    down(&dev->sem);
+
+    poll_wait(filp, &dev->r_wait, wait);
+    poll_wait(filp, &dev->w_wait, wait);
+    /*fifo非空*/
+    if (dev->current_len !=0)
+        mask |= POLLIN | POLLRDNORM;    /*标示数据可获得*/
+    /*fifo非满*/
+    if (dev->current_len != GLOBALFIFO_SIZE)
+        mask |= POLLOUT | POLLWRNORM;   /*标示数据可写入*/
+
+    up(&dev->sem);
+    return mask;
 }
 
 static const struct file_operations globalfifo_fops = 
@@ -204,6 +224,7 @@ static const struct file_operations globalfifo_fops =
     .release = globalfifo_release,
     .llseek = globalfifo_llseek,
     .unlocked_ioctl = globalfifo_ioctl,
+    .poll = globalfifo_poll,
 };
 
 static void globalfifo_setup_cdev(struct globalfifo_dev *dev, int index)
