@@ -98,6 +98,7 @@ http://stackoverflow.com/questions/1063564/unlocked-ioctl-vs-normal-ioctl
  - http://blog.csdn.net/liuhaoyutz/article/details/7400037
 - 用户空间的poll和select系统调用
 - 驱动程序poll的实现
+- 附加了一个轮询的例子——globalfifo（这个例子源自《Linux设备驱动开发详解》）
 
 ## 附加1 Android驱动程序开发
 
