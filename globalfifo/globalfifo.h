@@ -21,4 +21,5 @@ struct globalfifo_dev{
     struct semaphore sem;   //并发控制用的信号量
     wait_queue_head_t r_wait;	//阻塞读用的等待队列头
     wait_queue_head_t w_wait;   //阻塞写用的等待队列头
+    struct fasync_struct *async_queue;  //异步结构体指针，用于读
 };

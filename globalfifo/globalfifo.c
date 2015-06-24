@@ -26,6 +26,12 @@ static int globalfifo_major = GLOBALFIFO_MAJOR;
 dev_t devno;
 struct globalfifo_dev *globalfifo_devp;
 
+static int globalfifo_fasync(int fd, struct file *filp, int mode)
+{
+    struct globalfifo_dev *dev = filp->private_data;
+    return fasync_helper(fd, filp, mode, &dev->async_queue);
+}
+
 int globalfifo_open(struct inode *inode, struct file *filp)
 {
     // 将设备结构体指针赋值给文件私有数据指针
@@ -35,6 +41,8 @@ int globalfifo_open(struct inode *inode, struct file *filp)
 
 int globalfifo_release(struct inode *inode, struct file *filp)
 {
+    //将文件从异步通知列表中删除
+    globalfifo_fasync(-1, filp, 0);
     return 0;
 }
 
@@ -101,21 +109,21 @@ static ssize_t globalfifo_write(struct file *filp, const char __user *buf, size_
 
     // 等待FIFO非满
     while(dev->current_len == GLOBALFIFO_SIZE) {
-	if(filp->f_flags & O_NONBLOCK) { // 如果是非阻塞访问
-	    ret = -EAGAIN;
-	    goto out;
-	}
-	__set_current_state(TASK_INTERRUPTIBLE);  // 改变进程状态为睡眠
-	up(&dev->sem);
+	    if(filp->f_flags & O_NONBLOCK) { // 如果是非阻塞访问
+	        ret = -EAGAIN;
+	        goto out;
+	    }
+	    __set_current_state(TASK_INTERRUPTIBLE);  // 改变进程状态为睡眠
+	    up(&dev->sem);
 
-	schedule();  // 调度其他进程执行
-	
-	if(signal_pending(current)) {  // 如果是因为信号唤醒
-	    ret = -ERESTARTSYS;
-	    goto out2;
-	}
+	    schedule();  // 调度其他进程执行
+	    
+	    if(signal_pending(current)) {  // 如果是因为信号唤醒
+	        ret = -ERESTARTSYS;
+	        goto out2;
+	    }
 
-	down(&dev->sem);  // 获得信号量
+	    down(&dev->sem);  // 获得信号量
     }
 
     if (count > GLOBALFIFO_SIZE - dev->current_len)     //要写的字节数太多
@@ -126,10 +134,14 @@ static ssize_t globalfifo_write(struct file *filp, const char __user *buf, size_
         ret = -EFAULT;
 	goto out;
     } else {
-	dev->current_len += count;
+	    dev->current_len += count;
         printk(KERN_INFO "writen %d bytes(s), current_len:%d\n", count, dev->current_len);
 
-	wake_up_interruptible(&dev->r_wait);  // 唤醒读等待队列
+	    wake_up_interruptible(&dev->r_wait);  // 唤醒读等待队列
+
+        //产生异步信号
+        if(dev->async_queue)
+            kill_fasync(&dev->async_queue, SIGIO, POLL_IN);
 
         ret = count;
     }
