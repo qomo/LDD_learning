@@ -237,6 +237,7 @@ static const struct file_operations globalfifo_fops =
     .llseek = globalfifo_llseek,
     .unlocked_ioctl = globalfifo_ioctl,
     .poll = globalfifo_poll,
+    .fasync = globalfifo_fasync,
 };
 
 static void globalfifo_setup_cdev(struct globalfifo_dev *dev, int index)
