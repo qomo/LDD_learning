@@ -169,6 +169,12 @@ http://www.ibm.com/developerworks/cn/linux/l-proc.html
 `int platform_device_unregister(struct platform_device *pdev)`  
 可以参考[这篇混乱的博文](http://blog.csdn.net/ufo714/article/details/8595021)
 
+## 附加——异步通知
+异步通知指的是：一旦设备就绪，则主动通知应用程序，这样应用程序不需要查询设备的状态，类似硬件的“中断“的概念，但它不是中断，准确的说法是“信号驱动的异步I/O“  
+参考《Linux设备驱动开发详解》第9章  
+globalfifo的异步通知功能添加到代码/globalfifo中  
+其中，globalfifo.c为驱动源码；globalfifo_test.c为测试程序代码
+
 ## 附加 ctags+vim 的使用
 没做什么事情，就是生成了ctags标签，便于代码查阅，简单介绍一下安装和使用：  
 - 安装：`sudo apt-get install exuberant-ctags`
